@@ -14,6 +14,10 @@
     "@dhis2/cli-app-scripts": "^11.7.0"
   },
   "dependencies": {
-    "@dhis2/app-runtime": "^3.10.6"
+    "@dhis2/app-runtime": "^3.10.6",
+    "dhis2-ig-generator-app": "file:",
+    "handlebars": "^4.7.8",
+    "jszip": "^3.10.1",
+    "jszip-utils": "^0.1.0"
   }
 }

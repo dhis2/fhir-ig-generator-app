@@ -1,30 +1,82 @@
-import { useDataQuery } from '@dhis2/app-runtime'
+import React, { useEffect, useState } from 'react'
+import { DataQuery } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
-import React from 'react'
 import classes from './App.module.css'
+import Handlebars from 'handlebars'
+import JSZip from 'jszip';
+import JSZipUtils from 'jszip-utils';
 
-const query = {
-    me: {
-        resource: 'me',
+const optionSetsQuery = {
+    optionSets: {
+        resource: 'optionSets',
+        params: {
+            fields: ['id','name','displayName','description','options[code,name,description]']
+        }
     },
 }
 
 const MyApp = () => {
-    const { error, loading, data } = useDataQuery(query)
+    const [template, setTemplate] = useState('');
 
-    if (error) {
-        return <span>{i18n.t('ERROR')}</span>
+    const handleDownload = async (zip) => {
+        const blob = await zip.generateAsync({ type: 'blob'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'ig.zip';
+        a.click();
+        URL.revokeObjectURL(url);
+    };
+
+    const generateCodeSystem = (data) => {
+        Handlebars.registerHelper('fhirId', function (str) {
+            return str.replace(/\s+/g, '').replace('(', '_').replace(')', '_').replace('/', '_').replace('-', '_');
+        });
+        var compiledTemplate = Handlebars.compile(template);
+        return compiledTemplate(data)
     }
 
-    if (loading) {
-        return <span>{i18n.t('Loading...')}</span>
-    }
+    const exportMetadata = (data) => {
+        JSZipUtils.getBinaryContent('/assets/ig.zip', function (err, templateIg) {
+            if (err) {
+                throw err;
+            }
 
-    return (
-        <div className={classes.container}>
-            <h1>{i18n.t('Hello {{name}}', { name: data.me.name })}</h1>
-            <h3>{i18n.t('Welcome to DHIS2!')}</h3>
-        </div>
+            JSZip.loadAsync(templateIg).then(function () {
+                const igArchive = new JSZip();
+
+                igArchive.loadAsync(templateIg)
+                    .then(function () {
+                        for (var key in data.optionSets.optionSets) {
+                            igArchive.file(`input/fsh/CodeSystem${data.optionSets.optionSets[key].name}.fsh`, generateCodeSystem(data.optionSets.optionSets[key]));
+                        }
+                    }).then(function () { handleDownload(igArchive) });
+            });
+        });
+
+    };
+
+    useEffect(() => {
+        fetch('/assets/CodeSystem.fsh.handlebars')
+            .then((response) => response.text())
+            .then((template) => {
+                setTemplate(template);
+            });
+    }, []);
+
+    return (<div className={classes.container}>
+        <DataQuery query={optionSetsQuery}>
+            {({ error, loading, data }) => {
+                if (error) return <span>ERROR</span>
+                if (loading) return <span>...</span>
+                return (
+                    <>
+                        <button onClick={() => exportMetadata(data)}>Export FHIR IG</button>
+                    </>
+                )
+            }}
+        </DataQuery>
+    </div>
     )
 }
 
