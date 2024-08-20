@@ -1,62 +1,22 @@
-import React, { useEffect, useState } from 'react'
-import { DataQuery } from '@dhis2/app-runtime'
-import i18n from '@dhis2/d2-i18n'
-import classes from './App.module.css'
-import Handlebars from 'handlebars'
-import JSZip from 'jszip';
+import React, { useEffect, useState } from 'react';
+import { useOptionSets } from './hooks/useOptionSets';
+import WarningMessage from './components/WarningMessage';
+import ExportButton from './components/ExportButton';
+import { validateCodes } from './utils/codeValidation';
+import { handleDownload } from './utils/igDownload';
+import { registerHelpers } from './utils/handlebarsHelpers';
+import Handlebars from 'handlebars';
+import classes from './App.module.css';
 import JSZipUtils from 'jszip-utils';
-
-const optionSetsQuery = {
-    optionSets: {
-        resource: 'optionSets',
-        params: {
-            fields: ['id','name','displayName','description','options[code,name,description]']
-        }
-    },
-}
+import JSZip from 'jszip';
 
 const MyApp = () => {
     const [template, setTemplate] = useState('');
-
-    const handleDownload = async (zip) => {
-        const blob = await zip.generateAsync({ type: 'blob'});
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'ig.zip';
-        a.click();
-        URL.revokeObjectURL(url);
-    };
-
-    const generateCodeSystem = (data) => {
-        Handlebars.registerHelper('fhirId', function (str) {
-            return str.replace(/\s+/g, '').replace('(', '_').replace(')', '_').replace('/', '_').replace('-', '_');
-        });
-        var compiledTemplate = Handlebars.compile(template);
-        return compiledTemplate(data)
-    }
-
-    const exportMetadata = (data) => {
-        JSZipUtils.getBinaryContent('/assets/ig.zip', function (err, templateIg) {
-            if (err) {
-                throw err;
-            }
-
-            JSZip.loadAsync(templateIg).then(function () {
-                const igArchive = new JSZip();
-
-                igArchive.loadAsync(templateIg)
-                    .then(function () {
-                        for (var key in data.optionSets.optionSets) {
-                            igArchive.file(`input/fsh/CodeSystem${data.optionSets.optionSets[key].name}.fsh`, generateCodeSystem(data.optionSets.optionSets[key]));
-                        }
-                    }).then(function () { handleDownload(igArchive) });
-            });
-        });
-
-    };
+    const [showWarning, setShowWarning] = useState(false);
+    const {data, error, loading} = useOptionSets();
 
     useEffect(() => {
+        registerHelpers();
         fetch('/assets/CodeSystem.fsh.handlebars')
             .then((response) => response.text())
             .then((template) => {
@@ -64,20 +24,43 @@ const MyApp = () => {
             });
     }, []);
 
-    return (<div className={classes.container}>
-        <DataQuery query={optionSetsQuery}>
-            {({ error, loading, data }) => {
-                if (error) return <span>ERROR</span>
-                if (loading) return <span>...</span>
-                return (
-                    <>
-                        <button onClick={() => exportMetadata(data)}>Export FHIR IG</button>
-                    </>
-                )
-            }}
-        </DataQuery>
-    </div>
-    )
-}
+    useEffect(() => {
+        if (data && validateCodes(data.optionSets.optionSets)) {
+            setShowWarning(true);
+        }
+    }, [data]);
 
-export default MyApp
+    const exportMetadata = () => {
+        JSZipUtils.getBinaryContent('/assets/ig.zip', function (err, templateIg) {
+            if (err) throw err;
+
+            JSZip.loadAsync(templateIg).then(function () {
+                const igArchive = new JSZip();
+                igArchive.loadAsync(templateIg)
+                    .then(function () {
+                        const compiledTemplate = Handlebars.compile(template);
+                        data.optionSets.optionSets.forEach(optionSet => {
+                            igArchive.file(`input/fsh/codesystems/${optionSet.name}.fsh`, compiledTemplate(optionSet));
+                        });
+                    }).then(function () {
+                        handleDownload(igArchive);
+                    });
+            });
+        });
+    };
+
+    if (error) {
+        console.error("Error fetching option sets:", error);
+        return <span>ERROR</span>;
+    }
+    if (loading) return <span>...</span>;
+
+    return (
+        <div className={classes.container}>
+            {showWarning && <WarningMessage />}
+            <ExportButton onClick={exportMetadata} />
+        </div>
+    );
+};
+
+export default MyApp;
