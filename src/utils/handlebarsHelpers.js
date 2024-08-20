@@ -2,9 +2,11 @@ import Handlebars from 'handlebars';
 
 export const registerHelpers = () => {
     Handlebars.registerHelper('convertToFhirName', function (str) {
-        str.replace(/[()]/g, '_')
-            .replace(/\s+/g, '')
-            .replace(/(?:^|\s)(\w)/g, (_, c) => c ? c.toUpperCase() : '');
-        return str;
+        let cleanedStr = str.replace(/[^a-zA-Z0-9]/g, '_');
+        let capitalizedStr = cleanedStr
+            .split('_')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+            .join('');
+        return capitalizedStr;
     });
 };
