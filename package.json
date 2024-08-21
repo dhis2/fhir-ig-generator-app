@@ -18,6 +18,7 @@
     "dhis2-ig-generator-app": "file:",
     "handlebars": "^4.7.8",
     "jszip": "^3.10.1",
-    "jszip-utils": "^0.1.0"
+    "jszip-utils": "^0.1.0",
+    "@testing-library/react": "16.0.0"
   }
 }

@@ -9,8 +9,20 @@ export const convertToFhirName = (str) => {
     return capitalizedStr;
 };
 
+export const convertToFhirId = (str) => {
+    let cleanedStr = str.trim();
+    cleanedStr = cleanedStr.toLowerCase();
+    cleanedStr = cleanedStr.replace(/[^a-zA-Z0-9]+/g, '-')
+    cleanedStr = cleanedStr.replace(/^-+|-+$/g, '');
+    return cleanedStr;
+};
+
 export const registerHelpers = () => {
     Handlebars.registerHelper('convertToFhirName', function (str) {
         return convertToFhirName(str);
+    });
+
+    Handlebars.registerHelper('convertToFhirId', function (str) {
+        return convertToFhirId(str);
     });
 };
