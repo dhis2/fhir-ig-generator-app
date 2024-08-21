@@ -1,8 +1,8 @@
 CodeSystem: {{convertToFhirName name}}
 Title: "{{name}}"
-{{#description}}
+{{#if description}}
 Description: "{{description}}"
-{{/description}}
+{{/if}}
 {{#options}}
-* #"{{code}}"" "{{name}}"
+* #"{{code}}" "{{name}}"
 {{/options}}

@@ -4,7 +4,7 @@ import WarningMessage from './components/WarningMessage';
 import ExportButton from './components/ExportButton';
 import { validateCodes } from './utils/codeValidation';
 import { handleDownload } from './utils/igDownload';
-import { registerHelpers } from './utils/handlebarsHelpers';
+import { convertToFhirName, registerHelpers } from './utils/handlebarsHelpers';
 import Handlebars from 'handlebars';
 import classes from './App.module.css';
 import JSZipUtils from 'jszip-utils';
@@ -40,7 +40,8 @@ const MyApp = () => {
                     .then(function () {
                         const compiledTemplate = Handlebars.compile(template);
                         data.optionSets.optionSets.forEach(optionSet => {
-                            igArchive.file(`input/fsh/codesystems/${optionSet.name}.fsh`, compiledTemplate(optionSet));
+                            const fhirFileName = convertToFhirName(optionSet.name)
+                            igArchive.file(`input/fsh/codesystems/${fhirFileName}.fsh`, compiledTemplate(optionSet));
                         });
                     }).then(function () {
                         handleDownload(igArchive);
