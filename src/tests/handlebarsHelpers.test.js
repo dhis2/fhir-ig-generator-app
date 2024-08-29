@@ -1,4 +1,4 @@
-import { convertToFhirId, convertToFhirName } from "./utils/handlebarsHelpers";
+import { convertToFhirId, convertToFhirName } from "../utils/handlebarsHelpers";
 
 test('converts a string to FHIR name format', () => {
     expect(convertToFhirName("THIs Is my test   name__ ")).toBe("ThisIsMyTestName");
