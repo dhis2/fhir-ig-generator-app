@@ -1,0 +1,7 @@
+ValueSet: {{convertToFhirName name}}VS
+Id: {{convertToFhirId name}}-vs
+Title: "{{name}} value set"
+{{#if description}}
+Description: "{{description}}"
+{{/if}}
+* codes from system {{convertToFhirName name}}CS
