@@ -1,0 +1,21 @@
+{
+    "name": "Age category",
+    "options": [
+        {
+            "code": "0-14 years",
+            "name": "0-14 years"
+        },
+        {
+            "code": "15-19 years",
+            "name": "15-19 years"
+        },
+        {
+            "code": "20-24 years",
+            "name": "20-24 years"
+        },
+        {
+            "code": "25 years and above",
+            "name": "25 years and above"
+        }
+    ]
+}
