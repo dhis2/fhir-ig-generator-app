@@ -4,7 +4,9 @@ import Handlebars from "handlebars";
 import { convertToFhirName, registerHelpers } from "./handlebarsHelpers";
 import { handleDownload } from "./igDownload";
 
-export const exportMetadata = (template, optionSets) => {
+export const exportMetadata = (trackerPrograms, templates) => {
+
+    registerHelpers();
     JSZipUtils.getBinaryContent("/assets/ig.zip", function (err, templateIg) {
         if (err) throw err;
 
@@ -13,13 +15,9 @@ export const exportMetadata = (template, optionSets) => {
             igArchive
                 .loadAsync(templateIg)
                 .then(function () {
-                    const compiledTemplate = Handlebars.compile(template);
-                    optionSets.forEach((optionSet) => {
-                        const fhirFileName = convertToFhirName(optionSet.name);
-                        igArchive.file(
-                            `input/fsh/codesystems/${fhirFileName}.fsh`,
-                            compiledTemplate(optionSet)
-                        );
+                    trackerPrograms.forEach((program) => {
+                        console.log("Program: ",program)
+                        generateFshFilesForProgram(program, templates, igArchive);
                     });
                 })
                 .then(function () {
@@ -27,4 +25,25 @@ export const exportMetadata = (template, optionSets) => {
                 });
         });
     });
+};
+
+const generateFshFilesForProgram = (program, templates, igArchive) => {
+    const { codeSystemTemplate, valueSetTemplate} = templates;
+    program.programStages.forEach((stage) => {
+        stage.programStageDataElements.forEach(({ dataElement }) => {
+            if (dataElement.optionSet) {
+                const fhirFileName = convertToFhirName(dataElement.optionSet.name)
+                const codeSystemFsh = generateFsh(dataElement.optionSet,codeSystemTemplate);
+                const valueSetFsh = generateFsh(dataElement.optionSet,valueSetTemplate);
+
+                igArchive.file(`input/fsh/codesystems/${fhirFileName}CS.fsh`, codeSystemFsh);
+                igArchive.file(`input/fsh/valuesets/${fhirFileName}VS.fsh`, valueSetFsh);
+            }
+        });
+    });
+}
+
+const generateFsh = (data, template) => {
+    const compiledTemplate = Handlebars.compile(template);
+    return compiledTemplate(data);
 };

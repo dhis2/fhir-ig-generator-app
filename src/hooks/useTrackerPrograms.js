@@ -5,7 +5,13 @@ const trackerProgramQuery = {
     resource: "programs",
     params: {
       filter: "programType:eq:WITH_REGISTRATION",
-      fields: ["id", "displayName"],
+      fields: [
+        "id",
+        "displayName",
+        "name",
+        "description",
+        "programStages[name,description,programStageDataElements[dataElement[name,formName,valueType,optionSet[name,options[code,name]]]]]",
+      ],
       paging: false,
     },
   },
@@ -13,6 +19,12 @@ const trackerProgramQuery = {
 
 export const useTrackerPrograms = () => {
   const { data, error, loading } = useDataQuery(trackerProgramQuery);
+
   const programs = data?.programs?.programs ?? [];
-  return { programs, error, loading };
+
+  return {
+    programs,
+    error,
+    loading,
+  };
 };

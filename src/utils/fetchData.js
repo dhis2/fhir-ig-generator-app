@@ -1,12 +1,15 @@
 import { useConfig } from "@dhis2/app-runtime";
 
-export const fetchCodeSystemTemplate = async () => {
+export const fetchTemplate = async (templateName) => {
     try {
-        const response = await fetch("/assets/CodeSystem.fsh.handlebars");
+        const response = await fetch(`/assets/${templateName}`);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch templates: \"${templateName}\"`)
+        }
         return await response.text();
     } catch (error) {
-        console.error("Error fetching code system template:", error);
-        throw new Error("Error fetching code system template");
+        console.error(`Error fetching template ${templateName}:`, error);
+        throw new Error(`Error fetching template ${templateName}`);
     }
 };
 
