@@ -1,5 +1,5 @@
-CodeSystem: {{convertToFhirName name}}CS
-Id: {{convertToFhirId name}}-cs
+CodeSystem: {{toPascalCase name}}CS
+Id: {{toKebabCase name}}-cs
 Title: "{{name}}"
 {{#if description}}
 Description: "{{description}}"

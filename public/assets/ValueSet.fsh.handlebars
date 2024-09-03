@@ -1,7 +1,7 @@
-ValueSet: {{convertToFhirName name}}VS
-Id: {{convertToFhirId name}}-vs
+ValueSet: {{toPascalCase name}}VS
+Id: {{toKebabCase name}}-vs
 Title: "{{name}} value set"
 {{#if description}}
 Description: "{{description}}"
 {{/if}}
-* codes from system {{convertToFhirName name}}CS
+* codes from system {{toPascalCase name}}CS

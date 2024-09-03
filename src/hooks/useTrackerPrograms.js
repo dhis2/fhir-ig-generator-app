@@ -10,9 +10,9 @@ const trackerProgramQuery = {
         "displayName",
         "name",
         "description",
+        "programTrackedEntityAttributes[mandatory,trackedEntityAttribute[name,valueType,description,optionSet[name,valueType,options[code,name]]]]",
         "programStages[name,description,programStageDataElements[dataElement[name,formName,valueType,optionSet[name,options[code,name]]]]]",
-      ],
-      paging: false,
+      ]
     },
   },
 };

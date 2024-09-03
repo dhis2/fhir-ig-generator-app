@@ -4,7 +4,7 @@ export const fetchTemplate = async (templateName) => {
     try {
         const response = await fetch(`/assets/${templateName}`);
         if (!response.ok) {
-            throw new Error(`Failed to fetch templates: \"${templateName}\"`)
+            throw new Error(`Failed to fetch template: \"${templateName}\"`)
         }
         return await response.text();
     } catch (error) {

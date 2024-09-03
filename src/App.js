@@ -1,22 +1,17 @@
 import React, { useEffect, useState } from "react";
 import {
-  fetchCodeSystemTemplate,
-  fetchOptionSets,
-  fetchTemplate,
+  fetchTemplate
 } from "./utils/fetchData";
 import { exportMetadata } from "./utils/exportMetadata";
 import TrackerProgramSelector from "./components/TrackerProgramSelector";
 import { useTrackerPrograms } from "./hooks/useTrackerPrograms";
-import ExportButton from "./components/ExportButton";
 import { NoticeBox, CircularLoader, Button } from "@dhis2/ui";
-import { useConfig } from "@dhis2/app-runtime";
 import classes from "./App.module.css";
 
 const MyApp = () => {
   const [templates, setTemplates] = useState({});
   const [selectedProgramIds, setSelectedProgramIds] = useState([]);
   const [error, setError] = useState(null);
-  const { baseUrl } = useConfig();
 
   const { programs, error: programsError, loading} = useTrackerPrograms();
 

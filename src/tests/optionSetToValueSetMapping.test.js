@@ -1,7 +1,7 @@
 import Handlebars from "handlebars";
 import fs from 'fs';
 import path from 'path'
-import { convertToFhirName } from "../utils/handlebarsHelpers";
+import { toPascalCase } from "../utils/handlebarsHelpers";
 import { registerHelpers } from "../utils/handlebarsHelpers";
 registerHelpers();
 const template = fs.readFileSync(path.join(__dirname,"../../public/assets/ValueSet.fsh.handlebars"),'utf8');
