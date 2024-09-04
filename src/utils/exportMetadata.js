@@ -16,6 +16,7 @@ export const exportMetadata = (trackerPrograms, templates) => {
                 .loadAsync(templateIg)
                 .then(function () {
                     trackerPrograms.forEach((program) => {
+                        // extract optionSets
                         generateFshFilesForProgram(program, templates, igArchive);
                     });
                 })
@@ -27,7 +28,10 @@ export const exportMetadata = (trackerPrograms, templates) => {
 };
 
 const generateFshFilesForProgram = (program, templates, igArchive) => {
-    const { codeSystemTemplate, valueSetTemplate} = templates;
+    const { programLogicalModelTemplate, codeSystemTemplate, valueSetTemplate} = templates;
+    const programFsh = generateFsh(program,programLogicalModelTemplate);
+    const logicalModelFileName = toPascalCase(program.name)
+    igArchive.file(`input/fsh/models/${logicalModelFileName}.fsh`,programFsh)
     program.programStages.forEach((stage) => {
         stage.programStageDataElements.forEach(({ dataElement }) => {
             if (dataElement.optionSet) {

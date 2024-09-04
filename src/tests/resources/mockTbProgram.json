@@ -1,0 +1,406 @@
+{
+    "name": "TB program",
+    "enrollmentDateLabel": "Start of treatment date",
+    "incidentDateLabel": "Start of treatment date",
+    "programStages": [
+        {
+            "name": "Lab monitoring",
+            "description": "Laboratory monitoring",
+            "programStageDataElements": [
+                {
+                    "dataElement": {
+                        "name": "TB lab CD4",
+                        "formName": "CD4",
+                        "valueType": "TRUE_ONLY",
+                        "optionSetValue": false
+                    },
+                    "compulsory": false
+                },
+                {
+                    "dataElement": {
+                        "name": "TB lab Creatinine",
+                        "formName": "Creatinine",
+                        "valueType": "TRUE_ONLY",
+                        "optionSetValue": false
+                    },
+                    "compulsory": false
+                },
+                {
+                    "dataElement": {
+                        "name": "Tb lab Glucose",
+                        "formName": "Glucose",
+                        "valueType": "TRUE_ONLY",
+                        "optionSetValue": false
+                    },
+                    "compulsory": false
+                },
+                {
+                    "dataElement": {
+                        "name": "TB lab Hemoglobin",
+                        "formName": "Hemoglobin",
+                        "valueType": "TRUE_ONLY",
+                        "optionSetValue": false
+                    },
+                    "compulsory": false
+                }
+            ],
+            "displayExecutionDateLabel": "Report date",
+            "repeatable": true
+        },
+        {
+            "name": "TB visit",
+            "description": "Routine TB visit",
+            "programStageDataElements": [
+                {
+                    "dataElement": {
+                        "name": "TB Disease Classification",
+                        "formName": "Disease Classification",
+                        "valueType": "TEXT",
+                        "optionSet": {
+                            "name": "TB Disease Classification",
+                            "options": [
+                                {
+                                    "code": "P+",
+                                    "name": "P+"
+                                },
+                                {
+                                    "code": "P-",
+                                    "name": "P-"
+                                },
+                                {
+                                    "code": "PE",
+                                    "name": "PE"
+                                }
+                            ],
+                            "valueType": "TEXT"
+                        },
+                        "optionSetValue": true
+                    },
+                    "compulsory": true
+                },
+                {
+                    "dataElement": {
+                        "name": "TB Case Definition",
+                        "formName": "",
+                        "valueType": "TEXT",
+                        "optionSet": {
+                            "name": "TB case definition",
+                            "options": [
+                                {
+                                    "code": "New",
+                                    "name": "New"
+                                },
+                                {
+                                    "code": "Relapse",
+                                    "name": "Relapse"
+                                },
+                                {
+                                    "code": "Failure",
+                                    "name": "Failure"
+                                },
+                                {
+                                    "code": "TAI",
+                                    "name": "TAI"
+                                }
+                            ],
+                            "valueType": "TEXT"
+                        },
+                        "optionSetValue": true
+                    },
+                    "compulsory": true
+                },
+                {
+                    "dataElement": {
+                        "name": "TB treatment card",
+                        "formName": "Treatment card",
+                        "valueType": "FILE_RESOURCE",
+                        "optionSetValue": false
+                    },
+                    "compulsory": false
+                },
+                {
+                    "dataElement": {
+                        "name": "TB Previous use of second-line drugs",
+                        "formName": "Previous use of second- line drugs?",
+                        "valueType": "TRUE_ONLY",
+                        "optionSetValue": false
+                    },
+                    "compulsory": false
+                },
+                {
+                    "dataElement": {
+                        "name": "TB Started on ART",
+                        "formName": "Started on ART?",
+                        "valueType": "TRUE_ONLY",
+                        "optionSetValue": false
+                    },
+                    "compulsory": false
+                },
+                {
+                    "dataElement": {
+                        "name": "TB Started on CPT",
+                        "formName": "Started on CPT?",
+                        "valueType": "TRUE_ONLY",
+                        "optionSetValue": false
+                    },
+                    "compulsory": false
+                },
+                {
+                    "dataElement": {
+                        "name": "TB HIV testing done",
+                        "formName": "HIV testing done",
+                        "valueType": "BOOLEAN",
+                        "optionSetValue": false
+                    },
+                    "compulsory": false
+                }
+            ],
+            "displayExecutionDateLabel": "TB visit date",
+            "repeatable": false
+        },
+        {
+            "name": "Sputum smear microscopy test",
+            "description": "Sputum smear microscopy test",
+            "programStageDataElements": [
+                {
+                    "dataElement": {
+                        "name": "TB smear microscopy number of specimen",
+                        "valueType": "INTEGER_POSITIVE",
+                        "optionSetValue": false
+                    },
+                    "compulsory": true
+                },
+                {
+                    "dataElement": {
+                        "name": "TB smear microscopy test outcome",
+                        "valueType": "TEXT",
+                        "optionSet": {
+                            "name": "Test result (positive/negative)",
+                            "options": [
+                                {
+                                    "code": "NEG",
+                                    "name": "Negative"
+                                },
+                                {
+                                    "code": "POS",
+                                    "name": "Positive"
+                                }
+                            ],
+                            "valueType": "TEXT"
+                        },
+                        "optionSetValue": true
+                    },
+                    "compulsory": true
+                }
+            ],
+            "displayExecutionDateLabel": "Report date",
+            "repeatable": true
+        }
+    ],
+    "programTrackedEntityAttributes": [
+        {
+            "mandatory": true,
+            "trackedEntityAttribute": {
+                "name": "First name",
+                "description": "First name",
+                "valueType": "TEXT"
+            }
+        },
+        {
+            "mandatory": true,
+            "trackedEntityAttribute": {
+                "name": "Last name",
+                "description": "Last name",
+                "valueType": "TEXT"
+            }
+        },
+        {
+            "mandatory": true,
+            "trackedEntityAttribute": {
+                "name": "Gender",
+                "description": "Gender",
+                "valueType": "TEXT",
+                "optionSet": {
+                    "name": "Gender",
+                    "options": [
+                        {
+                            "code": "Male",
+                            "name": "Male"
+                        },
+                        {
+                            "code": "Female",
+                            "name": "Female"
+                        }
+                    ],
+                    "valueType": "TEXT"
+                }
+            }
+        },
+        {
+            "mandatory": false,
+            "trackedEntityAttribute": {
+                "name": "TB identifier",
+                "valueType": "TEXT"
+            }
+        },
+        {
+            "mandatory": false,
+            "trackedEntityAttribute": {
+                "name": "Age",
+                "description": "Age",
+                "valueType": "AGE"
+            }
+        },
+        {
+            "mandatory": false,
+            "trackedEntityAttribute": {
+                "name": "Address",
+                "description": "Country",
+                "valueType": "TEXT"
+            }
+        },
+        {
+            "mandatory": false,
+            "trackedEntityAttribute": {
+                "name": "City",
+                "description": "City",
+                "valueType": "TEXT"
+            }
+        },
+        {
+            "mandatory": false,
+            "trackedEntityAttribute": {
+                "name": "State",
+                "description": "State",
+                "valueType": "TEXT"
+            }
+        },
+        {
+            "mandatory": false,
+            "trackedEntityAttribute": {
+                "name": "Zip code",
+                "description": "Zip code",
+                "valueType": "NUMBER"
+            }
+        },
+        {
+            "mandatory": false,
+            "trackedEntityAttribute": {
+                "name": "Email",
+                "description": "Email address",
+                "valueType": "TEXT"
+            }
+        },
+        {
+            "mandatory": false,
+            "trackedEntityAttribute": {
+                "name": "Phone number",
+                "description": "Phone number",
+                "valueType": "PHONE_NUMBER"
+            }
+        },
+        {
+            "mandatory": false,
+            "trackedEntityAttribute": {
+                "name": "Residence location",
+                "valueType": "COORDINATE"
+            }
+        },
+        {
+            "mandatory": false,
+            "trackedEntityAttribute": {
+                "name": "Mother maiden name",
+                "description": "Mother maiden name",
+                "valueType": "TEXT"
+            }
+        },
+        {
+            "mandatory": false,
+            "trackedEntityAttribute": {
+                "name": "National identifier",
+                "description": "National identifier",
+                "valueType": "TEXT"
+            }
+        },
+        {
+            "mandatory": false,
+            "trackedEntityAttribute": {
+                "name": "Occupation",
+                "description": "Occupation",
+                "valueType": "TEXT"
+            }
+        },
+        {
+            "mandatory": false,
+            "trackedEntityAttribute": {
+                "name": "Company",
+                "description": "Company",
+                "valueType": "TEXT"
+            }
+        },
+        {
+            "mandatory": false,
+            "trackedEntityAttribute": {
+                "name": "TB number",
+                "description": "TB number",
+                "valueType": "TEXT"
+            }
+        },
+        {
+            "mandatory": false,
+            "trackedEntityAttribute": {
+                "name": "Vehicle",
+                "description": "Vehicle",
+                "valueType": "TEXT"
+            }
+        },
+        {
+            "mandatory": false,
+            "trackedEntityAttribute": {
+                "name": "Blood type",
+                "description": "Blood type",
+                "valueType": "TEXT"
+            }
+        },
+        {
+            "mandatory": false,
+            "trackedEntityAttribute": {
+                "name": "Weight in kg",
+                "description": "Weight in kg",
+                "valueType": "NUMBER"
+            }
+        },
+        {
+            "mandatory": false,
+            "trackedEntityAttribute": {
+                "name": "Height in cm",
+                "description": "Height in cm",
+                "valueType": "NUMBER"
+            }
+        },
+        {
+            "mandatory": false,
+            "trackedEntityAttribute": {
+                "name": "Latitude",
+                "description": "Latitude",
+                "valueType": "TEXT"
+            }
+        },
+        {
+            "mandatory": false,
+            "trackedEntityAttribute": {
+                "name": "Longitude",
+                "description": "Longitude",
+                "valueType": "TEXT"
+            }
+        },
+        {
+            "mandatory": false,
+            "trackedEntityAttribute": {
+                "name": "Unique ID",
+                "description": "Unique identiifer",
+                "valueType": "TEXT"
+            }
+        }
+    ]
+}

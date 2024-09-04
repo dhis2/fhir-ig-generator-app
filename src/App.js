@@ -17,6 +17,7 @@ const MyApp = () => {
 
   useEffect(() => {
     const templateFiles = {
+      programLogicalModelTemplate: "ProgramLogicalModel.fsh.handlebars",
       codeSystemTemplate: "CodeSystem.fsh.handlebars",
       valueSetTemplate: "ValueSet.fsh.handlebars",
     };
