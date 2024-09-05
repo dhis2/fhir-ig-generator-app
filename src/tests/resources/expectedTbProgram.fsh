@@ -6,6 +6,7 @@ Parent: BackboneElement
 * firstName 1..1 string "First name"
 * lastName 1..1 string "Last name"
 * gender 1..1 code "Gender"
+* gender from GenderVS (required)
 * tbIdentifier 0..1 string "TB identifier"
 * age 0..1 Age "Age"
 * address 0..1 string "Country"
@@ -27,3 +28,6 @@ Parent: BackboneElement
 * latitude 0..1 string "Latitude"
 * longitude 0..1 string "Longitude"
 * uniqueId 0..1 string "Unique identiifer"
+* labMonitoring 0..* LabMonitoring "Laboratory monitoring"
+* tbVisit 0..1 TBVisit "Routine TB visit"
+* sputumSmearMicroscopyTest 0..* SputumSmearMicroscopyTest "Sputum smear microscopy test"

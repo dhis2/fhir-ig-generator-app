@@ -100,6 +100,10 @@ export const toFhirElementDescription = (dhis2ProgramAttribute) => {
   }
 };
 
+export const isRepeatable = (repeatable) => {
+  return repeatable ? "*" : "1";
+};
+
 export const registerHelpers = () => {
   Handlebars.registerHelper("toPascalCase", function (str) {
     return toPascalCase(str);
@@ -129,5 +133,9 @@ export const registerHelpers = () => {
 
   Handlebars.registerHelper("toFhirElementDescription", function (str) {
     return toFhirElementDescription(str);
+  });
+
+  Handlebars.registerHelper("isRepeatable", function (repeatable) {
+    return isRepeatable(repeatable);
   });
 };

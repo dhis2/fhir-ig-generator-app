@@ -1,0 +1,13 @@
+Logical: {{toPascalCase name}}
+Title: "{{name}}"
+Parent: BackboneElement
+{{#if description}}
+Description: "{{description}}"
+{{/if}}
+* executionDate 0..1 date "{{displayExecutionDateLabel}}"
+{{#programStageDataElements}}
+* {{toCamelCase dataElement.name}} {{toFhirCardinality compulsory}}..1 {{toFhirDataType dataElement.valueType dataElement.optionSet}} "{{toFhirElementDescription dataElement}}"
+{{#if dataElement.optionSet}}
+* {{toCamelCase dataElement.name}} from {{toPascalCase dataElement.optionSet.name}}VS (required)
+{{/if}}
+{{/programStageDataElements}}
