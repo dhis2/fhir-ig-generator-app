@@ -41,7 +41,28 @@ export const toCamelCase = (str) => {
     .join("");
 };
 
-// TODO
+// TODO: codeSystem id and value set id mappings are equal?
+
+export const toFhirDataElementName = (dhis2Object) => {
+  if (!dhis2Object.name) {
+    throw new Error("Element must have a name property.");
+  }
+
+  const maxLength = 64;
+  const tryNames = [dhis2Object.name, dhis2Object.shortName].filter(Boolean);
+  
+  for (let name of tryNames) {
+    const camelCaseName = toCamelCase(name);
+    if (camelCaseName.length <= maxLength) {
+      return camelCaseName;
+    }
+  }
+
+  throw new Error(
+    "Both name and shortName are too long to be a valid FHIR data element name."
+  );
+};
+
 export const toFhirDataType = (dhis2ValueType, isOptionSet = false) => {
   if (isOptionSet) {
     return "code";
@@ -134,5 +155,9 @@ export const registerHelpers = () => {
 
   Handlebars.registerHelper("isRepeatable", function (repeatable) {
     return isRepeatable(repeatable);
+  });
+
+  Handlebars.registerHelper("toFhirDataElementName", function (dhis2Object) {
+    return toFhirDataElementName(dhis2Object);
   });
 };
