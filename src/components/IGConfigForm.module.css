@@ -1,0 +1,23 @@
+.container {
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.inputField {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.button {
+    margin-top: 20px;
+}
+
+.errorMessage {
+    color: red;
+}
