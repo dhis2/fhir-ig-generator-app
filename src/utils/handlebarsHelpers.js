@@ -20,7 +20,7 @@ export const toKebabCase = (str) => {
   return str
     .replace(/[^a-zA-Z0-9\s.-]/g, " ")
     .trim()
-    .split(/[\s_-]+/)
+    .split(/\s+/)
     .map((word) => word.toLowerCase())
     .filter((word) => word)
     .join("-");
@@ -28,9 +28,9 @@ export const toKebabCase = (str) => {
 
 export const toCamelCase = (str) => {
   return str
-    .replace(/[^a-zA-Z0-9\s.-]/g, " ")
+    .replace(/[^a-zA-Z0-9\s]/g, " ")
     .trim()
-    .split(/[\s_-]+/)
+    .split(/\s+/)
     .map((word, index) => {
       if (index == 0) {
         return word.toLowerCase();
@@ -59,7 +59,7 @@ export const toFhirDataType = (dhis2ValueType, isOptionSet = false) => {
     case "INTEGER_POSITIVE":
       return "positiveInt";
     case "INTEGER_NEGATIVE":
-      return "negativeInt";
+      return "integer";
     case "INTEGER_ZERO_OR_POSITIVE":
       return "unsignedInt";
     case "PERCENTAGE":
@@ -124,12 +124,9 @@ export const registerHelpers = () => {
     }
   );
 
-  Handlebars.registerHelper(
-    "toFhirCardinality",
-    function (isMandatory) {
-      return toFhirCardinality(isMandatory);
-    }
-  );
+  Handlebars.registerHelper("toFhirCardinality", function (isMandatory) {
+    return toFhirCardinality(isMandatory);
+  });
 
   Handlebars.registerHelper("toFhirElementDescription", function (str) {
     return toFhirElementDescription(str);

@@ -15,6 +15,9 @@ test('converts a string to kebab case', () => {
 
 test('converts a string to camel case', () => {
     expect(toCamelCase("TB identifier  ")).toBe("tbIdentifier");
+    expect(toCamelCase("patient-birth-date")).toBe("patientBirthDate");
+    expect(toCamelCase("   PaTient_birth.date--  ")).toBe("patientBirthDate");
+    expect(toCamelCase("123 patient birth date")).toBe("123PatientBirthDate");
 })
 
 test('checks if a tracked entity attribute is mandatory', () => {
@@ -25,4 +28,5 @@ test('converts DHIS2 value types to FHIR data types', () => {
     expect(toFhirDataType("TEXT")).toBe("string");
     expect(toFhirDataType("TRUE_ONLY")).toBe("boolean");
     expect(toFhirDataType("INTEGER_ZERO_OR_POSITIVE")).toBe("unsignedInt");
+    expect(toFhirDataType("INTEGER_NEGATIVE")).toBe("integer");
 })
