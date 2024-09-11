@@ -53,9 +53,16 @@ const MyApp = () => {
     setIgConfig(values);
   }
 
+  if (!igConfig) {
+    return (
+        <div className={classes.container}>
+            <IGConfigForm onSubmit={handleIGConfigSubmit} />
+        </div>
+    );
+}
+
   return (
     <div className={classes.container}>
-      <IGConfigForm onSubmit={handleIGConfigSubmit} />
       <TrackerProgramSelector
         programs={programs}
         selectedProgramIds={selectedProgramIds}

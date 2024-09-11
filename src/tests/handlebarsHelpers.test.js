@@ -1,4 +1,4 @@
-import { isMandatory, toCamelCase, toFhirCardinality, toFhirDataElementName, toFhirDataType, toKebabCase, toPascalCase } from "../utils/handlebarsHelpers";
+import { toCamelCase, toFhirCardinality, toFhirDataElementName, toFhirDataType, toKebabCase, toPascalCase } from "../utils/handlebarsHelpers";
 
 test('converts a string to pascal case', () => {
     expect(toPascalCase("THIs Is my test   name__ ")).toBe("ThisIsMyTestName");
