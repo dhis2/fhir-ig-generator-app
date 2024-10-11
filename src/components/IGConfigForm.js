@@ -66,10 +66,10 @@ const IGConfigForm = ({ onSubmit }) => {
                 validate={hasValue}
                 helpText="Default: draft"
                 options={[
-                                { label: 'Draft', value: 'draft' },
-                                { label: 'Active', value: 'active' },
-                                { label: 'Retired', value: 'retired' },
-                                { label: 'Unknown', value: 'unknown' },
+                                { label: 'draft', value: 'draft' },
+                                { label: 'active', value: 'active' },
+                                { label: 'retired', value: 'retired' },
+                                { label: 'unknown', value: 'unknown' },
                             ]}
               />
             </div>

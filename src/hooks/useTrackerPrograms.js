@@ -12,7 +12,7 @@ const trackerProgramQuery = {
         "description",
         "enrollmentDateLabel",
         "incidentDateLabel",
-        "programTrackedEntityAttributes[mandatory,trackedEntityAttribute[name,shortName,valueType,description,optionSet[name,valueType,options[code,name]]]]",
+        "programTrackedEntityAttributes[mandatory,trackedEntityAttribute[name,shortName,formName,valueType,description,optionSet[name,valueType,options[code,name]]]]",
         "programStages[name,description,repeatable,programStageDataElements[dataElement[name,shortName,formName,valueType,optionSet[name,options[code,name]]]]]",
       ]
     },

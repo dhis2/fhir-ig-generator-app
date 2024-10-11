@@ -49,7 +49,7 @@ export const toFhirDataElementName = (dhis2Object) => {
   }
 
   const maxLength = 64;
-  const tryNames = [dhis2Object.name, dhis2Object.shortName].filter(Boolean);
+  const tryNames = [dhis2Object.formName, dhis2Object.shortName].filter(Boolean);
   
   for (let name of tryNames) {
     const camelCaseName = toCamelCase(name);
@@ -59,7 +59,7 @@ export const toFhirDataElementName = (dhis2Object) => {
   }
 
   throw new Error(
-    "Both name and shortName are too long to be a valid FHIR data element name."
+    "Both formName and shortName are too long to be a valid FHIR data element name."
   );
 };
 
