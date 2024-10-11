@@ -2,7 +2,8 @@ import { useConfig } from "@dhis2/app-runtime";
 
 export const fetchTemplate = async (templateName) => {
     try {
-        const response = await fetch(`/assets/${templateName}`);
+        const localPath = `${window.location.origin}/assets/${templateName}`;
+        const response = await fetch(localPath);
         if (!response.ok) {
             throw new Error(`Failed to fetch template: \"${templateName}\"`)
         }
