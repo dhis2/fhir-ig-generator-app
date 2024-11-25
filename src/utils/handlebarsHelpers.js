@@ -48,8 +48,8 @@ export const toFhirDataElementName = (dhis2Object) => {
     throw new Error("Element must have a name property.");
   }
 
-  const maxLength = 64;
-  const tryNames = [dhis2Object.formName, dhis2Object.shortName].filter(Boolean);
+  const maxLength = 64; 
+  const tryNames = [dhis2Object.formName, dhis2Object.displayName, dhis2Object.shortName, dhis2Object.name].filter(Boolean);
   
   for (let name of tryNames) {
     const camelCaseName = toCamelCase(name);

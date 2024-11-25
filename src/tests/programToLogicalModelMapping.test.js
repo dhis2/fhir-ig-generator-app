@@ -8,7 +8,7 @@ const mockProgram = JSON.parse(fs.readFileSync(path.join(__dirname,"./resources/
 const expectedLogicalModelFSH = fs.readFileSync(path.join(__dirname,"./resources/expectedTbProgram.fsh"),'utf8');
 
 describe("DHIS2 Tracker Program to Logical Model FSH Mapping", () => {
-    it("Should correctly map an OptionSet to the expected Value Set in FSH format", () => {
+    it("Should correctly map a tracker program to the expected logical model", () => {
         const compiledTemplate = Handlebars.compile(template);
         const resultFSH = compiledTemplate(mockProgram).trim();
         expect(resultFSH).toEqual(expectedLogicalModelFSH.trim());
