@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { fetchTemplate } from "./utils/fetchData";
+import programLogicalModelTemplate from "./templates/ProgramLogicalModel.fsh.handlebars";
+import programStageLogicalModelTemplate from "./templates/ProgramStageLogicalModel.fsh.handlebars";
+import codeSystemTemplate from "./templates/CodeSystem.fsh.handlebars";
+import valueSetTemplate from "./templates/ValueSet.fsh.handlebars";
 import { exportMetadata } from "./utils/exportMetadata";
 import TrackerProgramSelector from "./components/TrackerProgramSelector";
 import IGConfigForm from "./components/IGConfigForm";
@@ -8,34 +11,18 @@ import { NoticeBox, CircularLoader, Button } from "@dhis2/ui";
 import classes from "./App.module.css";
 
 const MyApp = () => {
-  const [templates, setTemplates] = useState({});
   const [selectedProgramIds, setSelectedProgramIds] = useState([]);
   const [igConfig, setIgConfig] = useState(null);
   const [error, setError] = useState(null);
   const { programs, error: programsError, loading } = useTrackerPrograms();
+  const templates = {
+    programLogicalModelTemplate,
+    programStageLogicalModelTemplate,
+    codeSystemTemplate,
+    valueSetTemplate,
+};
 
-  useEffect(() => {
-    const templateFiles = {
-      programLogicalModelTemplate: "ProgramLogicalModel.fsh.handlebars",
-      programStageLogicalModelTemplate:
-        "ProgramStageLogicalModel.fsh.handlebars",
-      codeSystemTemplate: "CodeSystem.fsh.handlebars",
-      valueSetTemplate: "ValueSet.fsh.handlebars",
-    };
-
-    Object.entries(templateFiles).forEach(([key, templateName]) => {
-      fetchTemplate(templateName)
-        .then((templateContent) => {
-          setTemplates((prevTemplates) => ({
-            ...prevTemplates,
-            [key]: templateContent,
-          }));
-        })
-        .catch(setError);
-    });
-  }, []);
-
-  if (programsError || error) {
+  if (programsError) {
     console.error("Error fetching programs:", programsError || error);
     return (
       <NoticeBox title="Error" error>
@@ -51,7 +38,7 @@ const MyApp = () => {
 
   const handleIGConfigSubmit = (values) => {
     setIgConfig(values);
-  }
+  };
 
   if (!igConfig) {
     return (
@@ -71,7 +58,7 @@ const MyApp = () => {
       <Button
         primary
         onClick={() => exportMetadata(selectedPrograms, templates, igConfig)}
-        disabled={selectedPrograms.length == 0 || !igConfig}
+        disabled={selectedPrograms.length === 0 || !igConfig}
       >
         Download FHIR IG
       </Button>
