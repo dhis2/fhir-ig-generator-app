@@ -10,7 +10,6 @@ import classes from "./App.module.css";
 const MyApp = () => {
   const [selectedProgramIds, setSelectedProgramIds] = useState([]);
   const [igConfig, setIgConfig] = useState(null);
-  const [error, setError] = useState(null);
   const { programs, error: programsError, loading } = useTrackerPrograms();
   const { templates, error: templatesError } = useTemplates();
   

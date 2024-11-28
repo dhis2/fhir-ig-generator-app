@@ -1,5 +1,12 @@
 import { useEffect, useState } from 'react';
 
+export const templateFileNames = [
+    { key: 'programLogicalModelTemplate', fileName: 'ProgramLogicalModel.fsh.handlebars' },
+    { key: 'programStageLogicalModelTemplate', fileName: 'ProgramStageLogicalModel.fsh.handlebars' },
+    { key: 'codeSystemTemplate', fileName: 'CodeSystem.fsh.handlebars' },
+    { key: 'valueSetTemplate', fileName: 'ValueSet.fsh.handlebars' },
+]
+
 export const useTemplates = () => {
     const [templates, setTemplates] = useState(null);
     const [error, setError] = useState(null);
@@ -17,15 +24,15 @@ export const useTemplates = () => {
 
         const loadTemplates = async () => {
             try {
-                const loadedTemplates = {
-                    programLogicalModelTemplate: await fetchTemplate('ProgramLogicalModel.fsh.handlebars'),
-                    programStageLogicalModelTemplate: await fetchTemplate('ProgramStageLogicalModel.fsh.handlebars'),
-                    codeSystemTemplate: await fetchTemplate('CodeSystem.fsh.handlebars'),
-                    valueSetTemplate: await fetchTemplate('ValueSet.fsh.handlebars'),
-                };
+                const loadedTemplates = {};
+                for (const { key, fileName } of templateFileNames) {
+                    loadedTemplates[key] = await fetchTemplate(fileName);
+                }
+
                 if (isMounted) {
                     setTemplates(loadedTemplates);
                 }
+                
             } catch (error) {
                 console.error(error);
                 if (isMounted) {
