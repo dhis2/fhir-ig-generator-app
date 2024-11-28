@@ -2,6 +2,8 @@
     "name": "TB program",
     "enrollmentDateLabel": "Start of treatment date",
     "incidentDateLabel": "Start of treatment date",
+    "displayName": "TB program",
+    "id": "ur1Edk5Oe2n",
     "programStages": [
         {
             "name": "Lab monitoring",
@@ -10,41 +12,40 @@
                 {
                     "dataElement": {
                         "name": "TB lab CD4",
+                        "shortName": "TB lab CD4",
                         "formName": "CD4",
                         "valueType": "TRUE_ONLY",
-                        "optionSetValue": false
-                    },
-                    "compulsory": false
+                        "displayName": "TB lab CD4"
+                    }
                 },
                 {
                     "dataElement": {
                         "name": "TB lab Creatinine",
+                        "shortName": "TB lab Creatinine",
                         "formName": "Creatinine",
                         "valueType": "TRUE_ONLY",
-                        "optionSetValue": false
-                    },
-                    "compulsory": false
+                        "displayName": "TB lab Creatinine"
+                    }
                 },
                 {
                     "dataElement": {
                         "name": "Tb lab Glucose",
+                        "shortName": "Tb lab Glucose",
                         "formName": "Glucose",
                         "valueType": "TRUE_ONLY",
-                        "optionSetValue": false
-                    },
-                    "compulsory": false
+                        "displayName": "Tb lab Glucose"
+                    }
                 },
                 {
                     "dataElement": {
                         "name": "TB lab Hemoglobin",
+                        "shortName": "TB lab Hemoglobin",
                         "formName": "Hemoglobin",
                         "valueType": "TRUE_ONLY",
-                        "optionSetValue": false
-                    },
-                    "compulsory": false
+                        "displayName": "TB lab Hemoglobin"
+                    }
                 }
             ],
-            "displayExecutionDateLabel": "Report date",
             "repeatable": true
         },
         {
@@ -54,6 +55,7 @@
                 {
                     "dataElement": {
                         "name": "TB Disease Classification",
+                        "shortName": "TB Disease Class.",
                         "formName": "Disease Classification",
                         "valueType": "TEXT",
                         "optionSet": {
@@ -71,16 +73,15 @@
                                     "code": "PE",
                                     "name": "PE"
                                 }
-                            ],
-                            "valueType": "TEXT"
+                            ]
                         },
-                        "optionSetValue": true
-                    },
-                    "compulsory": true
+                        "displayName": "TB Disease Classification"
+                    }
                 },
                 {
                     "dataElement": {
                         "name": "TB Case Definition",
+                        "shortName": "TB Case Definition",
                         "formName": "",
                         "valueType": "TEXT",
                         "optionSet": {
@@ -102,60 +103,57 @@
                                     "code": "TAI",
                                     "name": "TAI"
                                 }
-                            ],
-                            "valueType": "TEXT"
+                            ]
                         },
-                        "optionSetValue": true
-                    },
-                    "compulsory": true
+                        "displayName": "TB Case Definition"
+                    }
                 },
                 {
                     "dataElement": {
                         "name": "TB treatment card",
+                        "shortName": "TB treatment card",
                         "formName": "Treatment card",
                         "valueType": "FILE_RESOURCE",
-                        "optionSetValue": false
-                    },
-                    "compulsory": false
+                        "displayName": "TB treatment card"
+                    }
                 },
                 {
                     "dataElement": {
                         "name": "TB Previous use of second-line drugs",
+                        "shortName": "TB Previous use of second- line drugs",
                         "formName": "Previous use of second- line drugs?",
                         "valueType": "TRUE_ONLY",
-                        "optionSetValue": false
-                    },
-                    "compulsory": false
+                        "displayName": "TB Previous use of second-line drugs"
+                    }
                 },
                 {
                     "dataElement": {
                         "name": "TB Started on ART",
+                        "shortName": "TB Started on ART",
                         "formName": "Started on ART?",
                         "valueType": "TRUE_ONLY",
-                        "optionSetValue": false
-                    },
-                    "compulsory": false
+                        "displayName": "TB Started on ART"
+                    }
                 },
                 {
                     "dataElement": {
                         "name": "TB Started on CPT",
+                        "shortName": "TB Started on CPT",
                         "formName": "Started on CPT?",
                         "valueType": "TRUE_ONLY",
-                        "optionSetValue": false
-                    },
-                    "compulsory": false
+                        "displayName": "TB Started on CPT"
+                    }
                 },
                 {
                     "dataElement": {
                         "name": "TB HIV testing done",
+                        "shortName": "TB HIV testing done",
                         "formName": "HIV testing done",
                         "valueType": "BOOLEAN",
-                        "optionSetValue": false
-                    },
-                    "compulsory": false
+                        "displayName": "TB HIV testing done"
+                    }
                 }
             ],
-            "displayExecutionDateLabel": "TB visit date",
             "repeatable": false
         },
         {
@@ -165,14 +163,15 @@
                 {
                     "dataElement": {
                         "name": "TB smear microscopy number of specimen",
+                        "shortName": "TB smear microscopy number of specimen",
                         "valueType": "INTEGER_POSITIVE",
-                        "optionSetValue": false
-                    },
-                    "compulsory": true
+                        "displayName": "TB smear microscopy number of specimen"
+                    }
                 },
                 {
                     "dataElement": {
                         "name": "TB smear microscopy test outcome",
+                        "shortName": "TB smear microscopy test outcome",
                         "valueType": "TEXT",
                         "optionSet": {
                             "name": "Test result (positive/negative)",
@@ -185,15 +184,12 @@
                                     "code": "POS",
                                     "name": "Positive"
                                 }
-                            ],
-                            "valueType": "TEXT"
+                            ]
                         },
-                        "optionSetValue": true
-                    },
-                    "compulsory": true
+                        "displayName": "TB smear microscopy test outcome"
+                    }
                 }
             ],
-            "displayExecutionDateLabel": "Report date",
             "repeatable": true
         }
     ],
@@ -202,22 +198,27 @@
             "mandatory": true,
             "trackedEntityAttribute": {
                 "name": "First name",
+                "shortName": "First name",
                 "description": "First name",
-                "valueType": "TEXT"
+                "valueType": "TEXT",
+                "displayName": "First name"
             }
         },
         {
             "mandatory": true,
             "trackedEntityAttribute": {
                 "name": "Last name",
+                "shortName": "Last name",
                 "description": "Last name",
-                "valueType": "TEXT"
+                "valueType": "TEXT",
+                "displayName": "Last name"
             }
         },
         {
             "mandatory": true,
             "trackedEntityAttribute": {
                 "name": "Gender",
+                "shortName": "Gender",
                 "description": "Gender",
                 "valueType": "TEXT",
                 "optionSet": {
@@ -233,173 +234,216 @@
                         }
                     ],
                     "valueType": "TEXT"
-                }
+                },
+                "displayName": "Gender"
             }
         },
         {
             "mandatory": false,
             "trackedEntityAttribute": {
                 "name": "TB identifier",
-                "valueType": "TEXT"
+                "shortName": "TB identifier",
+                "valueType": "TEXT",
+                "displayName": "TB identifier"
             }
         },
         {
             "mandatory": false,
             "trackedEntityAttribute": {
                 "name": "Age",
+                "shortName": "Age",
                 "description": "Age",
-                "valueType": "AGE"
+                "valueType": "AGE",
+                "displayName": "Age"
             }
         },
         {
             "mandatory": false,
             "trackedEntityAttribute": {
                 "name": "Address",
+                "shortName": "Address",
                 "description": "Country",
-                "valueType": "TEXT"
+                "valueType": "TEXT",
+                "displayName": "Address"
             }
         },
         {
             "mandatory": false,
             "trackedEntityAttribute": {
                 "name": "City",
+                "shortName": "City",
                 "description": "City",
-                "valueType": "TEXT"
+                "valueType": "TEXT",
+                "displayName": "City"
             }
         },
         {
             "mandatory": false,
             "trackedEntityAttribute": {
                 "name": "State",
+                "shortName": "State",
                 "description": "State",
-                "valueType": "TEXT"
+                "valueType": "TEXT",
+                "displayName": "State"
             }
         },
         {
             "mandatory": false,
             "trackedEntityAttribute": {
                 "name": "Zip code",
+                "shortName": "Zip code",
                 "description": "Zip code",
-                "valueType": "NUMBER"
+                "valueType": "NUMBER",
+                "displayName": "Zip code"
             }
         },
         {
             "mandatory": false,
             "trackedEntityAttribute": {
                 "name": "Email",
+                "shortName": "Email",
                 "description": "Email address",
-                "valueType": "TEXT"
+                "valueType": "TEXT",
+                "displayName": "Email"
             }
         },
         {
             "mandatory": false,
             "trackedEntityAttribute": {
                 "name": "Phone number",
+                "shortName": "Phone number",
                 "description": "Phone number",
-                "valueType": "PHONE_NUMBER"
+                "valueType": "PHONE_NUMBER",
+                "displayName": "Phone number"
             }
         },
         {
             "mandatory": false,
             "trackedEntityAttribute": {
                 "name": "Residence location",
-                "valueType": "COORDINATE"
+                "shortName": "Residence location",
+                "valueType": "COORDINATE",
+                "displayName": "Residence location"
             }
         },
         {
             "mandatory": false,
             "trackedEntityAttribute": {
                 "name": "Mother maiden name",
+                "shortName": "Mother maiden name",
                 "description": "Mother maiden name",
-                "valueType": "TEXT"
+                "valueType": "TEXT",
+                "displayName": "Mother maiden name"
             }
         },
         {
             "mandatory": false,
             "trackedEntityAttribute": {
                 "name": "National identifier",
+                "shortName": "National identifier",
                 "description": "National identifier",
-                "valueType": "TEXT"
+                "valueType": "TEXT",
+                "displayName": "National identifier"
             }
         },
         {
             "mandatory": false,
             "trackedEntityAttribute": {
                 "name": "Occupation",
+                "shortName": "Occupation",
                 "description": "Occupation",
-                "valueType": "TEXT"
+                "valueType": "TEXT",
+                "displayName": "Occupation"
             }
         },
         {
             "mandatory": false,
             "trackedEntityAttribute": {
                 "name": "Company",
+                "shortName": "Company",
                 "description": "Company",
-                "valueType": "TEXT"
+                "valueType": "TEXT",
+                "displayName": "Company"
             }
         },
         {
             "mandatory": false,
             "trackedEntityAttribute": {
                 "name": "TB number",
+                "shortName": "TB number",
                 "description": "TB number",
-                "valueType": "TEXT"
+                "valueType": "TEXT",
+                "displayName": "TB number"
             }
         },
         {
             "mandatory": false,
             "trackedEntityAttribute": {
                 "name": "Vehicle",
+                "shortName": "Vehicle",
                 "description": "Vehicle",
-                "valueType": "TEXT"
+                "valueType": "TEXT",
+                "displayName": "Vehicle"
             }
         },
         {
             "mandatory": false,
             "trackedEntityAttribute": {
                 "name": "Blood type",
+                "shortName": "Blood type",
                 "description": "Blood type",
-                "valueType": "TEXT"
+                "valueType": "TEXT",
+                "displayName": "Blood type"
             }
         },
         {
             "mandatory": false,
             "trackedEntityAttribute": {
                 "name": "Weight in kg",
+                "shortName": "Weight in kg",
                 "description": "Weight in kg",
-                "valueType": "NUMBER"
+                "valueType": "NUMBER",
+                "displayName": "Weight in kg"
             }
         },
         {
             "mandatory": false,
             "trackedEntityAttribute": {
                 "name": "Height in cm",
+                "shortName": "Height in cm",
                 "description": "Height in cm",
-                "valueType": "NUMBER"
+                "valueType": "NUMBER",
+                "displayName": "Height in cm"
             }
         },
         {
             "mandatory": false,
             "trackedEntityAttribute": {
                 "name": "Latitude",
+                "shortName": "Latitude",
                 "description": "Latitude",
-                "valueType": "TEXT"
+                "valueType": "TEXT",
+                "displayName": "Latitude"
             }
         },
         {
             "mandatory": false,
             "trackedEntityAttribute": {
                 "name": "Longitude",
+                "shortName": "Longitude",
                 "description": "Longitude",
-                "valueType": "TEXT"
+                "valueType": "TEXT",
+                "displayName": "Longitude"
             }
         },
         {
             "mandatory": false,
             "trackedEntityAttribute": {
                 "name": "Unique ID",
+                "shortName": "Unique identifier",
                 "description": "Unique identiifer",
-                "valueType": "TEXT"
+                "valueType": "TEXT",
+                "displayName": "Unique ID"
             }
         }
     ]

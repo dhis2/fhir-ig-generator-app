@@ -7,7 +7,8 @@ import YAML from "yaml";
 
 export const exportMetadata = (trackerPrograms, templates, igConfig) => {
   registerHelpers();
-  JSZipUtils.getBinaryContent("/assets/ig.zip", function (err, templateIg) {
+  const igZipPath = `${process.env.PUBLIC_URL}/assets/ig.zip`;
+  JSZipUtils.getBinaryContent(igZipPath, function (err, templateIg) {
     if (err) throw err;
 
     JSZip.loadAsync(templateIg).then(function () {

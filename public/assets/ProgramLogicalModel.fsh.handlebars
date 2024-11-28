@@ -4,8 +4,8 @@ Parent: Base
 {{#if description}}
 Description: "{{description}}"
 {{/if}}
-* enrollmentDate 1..1 date "{{enrollmentDateLabel}}."
-* incidentDate 0..1 date "{{incidentDateLabel}}."
+* enrollmentDate 1..1 date "{{enrollmentDateLabel}}"
+* incidentDate 0..1 date "{{incidentDateLabel}}"
 {{#programTrackedEntityAttributes}}
 * {{toFhirDataElementName trackedEntityAttribute}} {{toFhirCardinality mandatory}}..1 {{toFhirDataType trackedEntityAttribute.valueType trackedEntityAttribute.optionSet}} "{{toFhirElementDescription trackedEntityAttribute}}"
 {{#if trackedEntityAttribute.optionSet}}
