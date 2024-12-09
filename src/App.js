@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { exportMetadata } from "./utils/exportMetadata";
 import TrackerProgramSelector from "./components/TrackerProgramSelector";
 import IGConfigForm from "./components/IGConfigForm";
@@ -21,6 +21,7 @@ const MyApp = () => {
       </NoticeBox>
     );
   }
+  
   if (loading || !templates) return <CircularLoader />;
 
   const selectedPrograms = programs.filter((program) =>
