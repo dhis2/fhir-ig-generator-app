@@ -47,6 +47,7 @@ const MyApp = () => {
         selectedProgramIds={selectedProgramIds}
         setSelectedProgramIds={setSelectedProgramIds}
       />
+      <div className={classes.downloadButton}>
       <Button
         primary
         onClick={() => exportMetadata(selectedPrograms, templates, igConfig)}
@@ -54,6 +55,8 @@ const MyApp = () => {
       >
         Download FHIR IG
       </Button>
+      </div>
+      
     </div>
   );
 };
