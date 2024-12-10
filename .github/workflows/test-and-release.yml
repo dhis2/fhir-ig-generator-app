@@ -21,9 +21,9 @@ jobs:
     #     secrets: inherit
     #     with:
     #         api_version: 42
-    release:
-        needs: [lint-commits, lint, test]
-        uses: dhis2/workflows-platform/.github/workflows/release.yml@v1
-        # Skips forks and dependabot PRs
-        if: '!github.event.push.repository.fork'
-        secrets: inherit
+    # release:
+    #    needs: [lint-commits, lint, test]
+    #    uses: dhis2/workflows-platform/.github/workflows/release.yml@v1
+    #    # Skips forks and dependabot PRs
+    #    if: '!github.event.push.repository.fork'
+    #    secrets: inherit
