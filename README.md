@@ -1,3 +1,10 @@
+## DHIS2 Implementation Guide generator app
+The DHIS2 IG Generator app helps users generate FHIR Implementation Guides (IGs) based on DHIS2 metadata. Designed for developers and implementers working with DHIS2 tracker programs, this app provides an intuitive interface to configure an IG, select tracker programs, and transform metadata into FSH files. The generated IG is bundled locally, ready for further processing with SUSHI and the IG Publisher. This app requires a DHIS2 instance with tracker metadata and is intended as a development tool to streamline the authoring process of IGs. External tools (SUSHI and IG Publisher) must be used to finalize the IG.
+
+![Screenshot](public/images/overview.png)
+
+---
+
 This project was bootstrapped with [DHIS2 Application Platform](https://github.com/dhis2/app-platform).
 
 ## Available Scripts
