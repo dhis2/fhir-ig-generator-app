@@ -7,11 +7,11 @@ Description: "{{description}}"
 * enrollmentDate 1..1 date "{{enrollmentDateLabel}}"
 * incidentDate 0..1 date "{{incidentDateLabel}}"
 {{#programTrackedEntityAttributes}}
-* {{toFhirDataElementName trackedEntityAttribute}} {{toFhirCardinality mandatory}}..1 {{toFhirDataType trackedEntityAttribute.valueType trackedEntityAttribute.optionSet}} "{{toFhirElementDescription trackedEntityAttribute}}"
+* {{toFhirDataElementName trackedEntityAttribute}} {{toFhirCardinality mandatory}}..1 {{toFhirDataType trackedEntityAttribute.valueType trackedEntityAttribute.optionSet}} "{{{toFhirElementDescription trackedEntityAttribute}}}"
 {{#if trackedEntityAttribute.optionSet}}
 * {{toFhirDataElementName trackedEntityAttribute}} from {{toPascalCase trackedEntityAttribute.optionSet.name}}VS (required)
 {{/if}}
 {{/programTrackedEntityAttributes}}
 {{#programStages}}
-* {{toCamelCase name}} 0..{{isRepeatable repeatable}} {{toPascalCase name}} "{{toFhirElementDescription this}}"
+* {{toCamelCase name}} 0..{{isRepeatable repeatable}} {{toPascalCase name}} "{{{toFhirElementDescription this}}}"
 {{/programStages}}

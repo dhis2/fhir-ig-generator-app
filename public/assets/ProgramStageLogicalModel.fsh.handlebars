@@ -6,7 +6,7 @@ Description: "{{description}}"
 {{/if}}
 * executionDate 0..1 date "{{displayExecutionDateLabel}}"
 {{#programStageDataElements}}
-* {{toFhirDataElementName dataElement}} {{toFhirCardinality compulsory}}..1 {{toFhirDataType dataElement.valueType dataElement.optionSet}} "{{toFhirElementDescription dataElement}}"
+* {{toFhirDataElementName dataElement}} {{toFhirCardinality compulsory}}..1 {{toFhirDataType dataElement.valueType dataElement.optionSet}} "{{{toFhirElementDescription dataElement}}}"
 {{#if dataElement.optionSet}}
 * {{toFhirDataElementName dataElement}} from {{toPascalCase dataElement.optionSet.name}}VS (required)
 {{/if}}
