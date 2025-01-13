@@ -199,7 +199,7 @@
             "trackedEntityAttribute": {
                 "name": "First name",
                 "shortName": "First name",
-                "description": "First name",
+                "description": "This is the person's first name",
                 "valueType": "TEXT",
                 "displayName": "First name"
             }
