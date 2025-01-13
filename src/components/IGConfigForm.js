@@ -16,8 +16,8 @@ const IGConfigForm = ({ onSubmit }) => {
           version: "0.1.0",
           releaseLabel: "ci-build",
           publisher: {
-            name: "Example Publisher",
-            url: "http://example.org/example-publisher",
+            name: "DHIS2",
+            url: "https://dhis2.org",
           },
         }}
       >
@@ -103,7 +103,7 @@ const IGConfigForm = ({ onSubmit }) => {
                 component={InputFieldFF}
                 className={styles.inputField}
                 validate={hasValue}
-                helpText="Default: Example Publisher"
+                helpText="Default: DHIS2"
               />
             </div>
             <div className={styles.row}>
@@ -114,7 +114,7 @@ const IGConfigForm = ({ onSubmit }) => {
                 component={InputFieldFF}
                 className={styles.inputField}
                 validate={hasValue}
-                helpText="Default: http://example.org/example-publisher"
+                helpText="Default: https://dhis2.org"
               />
             </div>
 
