@@ -2,7 +2,7 @@ import { CustomDataProvider } from '@dhis2/app-runtime'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { act } from 'react-dom/test-utils'
-import App from '../App.js'
+import App from '../App.jsx'
 
 beforeEach(() => {
     global.fetch = jest.fn((url) => {
