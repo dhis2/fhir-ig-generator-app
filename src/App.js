@@ -34,9 +34,7 @@ const MyApp = () => {
 
   if (!igConfig) {
     return (
-        <div className={classes.container}>
             <IGConfigForm onSubmit={handleIGConfigSubmit} />
-        </div>
     );
 }
 
