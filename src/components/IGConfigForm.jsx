@@ -1,29 +1,25 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { ReactFinalForm, SingleSelectFieldFF, InputFieldFF, Button, hasValue, createPattern } from "@dhis2/ui";
 import styles from "./IGConfigForm.module.css";
 
-const IGConfigForm = ({ onSubmit }) => {
+const IGConfigForm = ({ igConfig, setIgConfig }) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = (values) => {
+    setIgConfig(values)
+    navigate("/program-selector");
+  }
   return (
     <div className={styles.centerWrapper}>
       <div className={styles.container}>
         <h2 className={styles.title}>Implementation Guide Configuration</h2>
         <ReactFinalForm.Form
-          onSubmit={onSubmit}
-          initialValues={{
-            id: "fhir.example",
-            name: "Example IG",
-            canonical: "http://example.org",
-            status: "draft",
-            version: "0.1.0",
-            releaseLabel: "ci-build",
-            publisher: {
-              name: "DHIS2",
-              url: "https://dhis2.org",
-            },
-          }}
+          onSubmit={handleSubmit}
+          initialValues={igConfig}
         >
-          {({ handleSubmit }) => (
-            <form onSubmit={handleSubmit}>
+          {({ handleSubmit: formSubmit }) => (
+            <form onSubmit={formSubmit}>
               <div className={styles.gridContainer}>
                 <ReactFinalForm.Field
                   required
@@ -114,7 +110,7 @@ const IGConfigForm = ({ onSubmit }) => {
 
               <div className={styles.button}>
                 <Button type="submit" primary large>
-                  Set Configuration
+                  Save & Continue
                 </Button>
               </div>
             </form>
