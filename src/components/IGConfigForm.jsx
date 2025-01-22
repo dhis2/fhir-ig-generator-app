@@ -1,21 +1,14 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import { ReactFinalForm, SingleSelectFieldFF, InputFieldFF, Button, hasValue, createPattern } from "@dhis2/ui";
 import styles from "./IGConfigForm.module.css";
 
-const IGConfigForm = ({ igConfig, setIgConfig }) => {
-  const navigate = useNavigate();
-
-  const handleSubmit = (values) => {
-    setIgConfig(values)
-    navigate("/program-selector");
-  }
+const IGConfigForm = ({ igConfig, onSubmit }) => {
   return (
     <div className={styles.centerWrapper}>
       <div className={styles.container}>
         <h2 className={styles.title}>Implementation Guide Configuration</h2>
         <ReactFinalForm.Form
-          onSubmit={handleSubmit}
+          onSubmit={onSubmit}
           initialValues={igConfig}
         >
           {({ handleSubmit: formSubmit }) => (

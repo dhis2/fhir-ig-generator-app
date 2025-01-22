@@ -8,14 +8,14 @@
     font-size: 1rem;
 }
 
-.downloadButton {
-    margin-top: 20px;
-}
-
 .buttonRow {
     margin-top: 20px;
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 10px;
+}
+
+.downloadButton {
+    margin-top: 20px;
 }

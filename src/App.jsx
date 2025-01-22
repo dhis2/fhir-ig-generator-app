@@ -1,16 +1,9 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
-import { exportMetadata } from "./utils/exportMetadata";
-import TrackerProgramSelector from "./components/TrackerProgramSelector.jsx";
-import IGConfigForm from "./components/IGConfigForm.jsx";
-import { useTrackerPrograms } from "./hooks/useTrackerPrograms";
-import { useTemplates } from "./hooks/useTemplates";
-import { NoticeBox, CircularLoader, Button } from "@dhis2/ui";
-import classes from "./App.module.css";
+import IGConfigPage from "./pages/IGConfigPage"
+import TrackerProgramSelectorPage from "./pages/TrackerProgramSelectorPage"
 
 const MyApp = () => {
-  const navigate = useNavigate();
-  const [selectedProgramIds, setSelectedProgramIds] = useState([]);
+  const [currentPage, setCurrentPage] = useState("config");
   const [igConfig, setIgConfig] = useState({
     id: "fhir.example",
     name: "Example IG",
@@ -23,63 +16,25 @@ const MyApp = () => {
       url: "https://dhis2.org",
     },
   });
-  const { programs, error: programsError, loading } = useTrackerPrograms();
-  const { templates, error: templatesError } = useTemplates();
 
-  if (programsError || templatesError) {
-    console.error("Error: ", programsError || templatesError);
-    return (
-      <NoticeBox title="Error" error>
-        There was an error loading data.
-      </NoticeBox>
-    );
+  const handleFormSubmit = (values) => {
+    setIgConfig(values);
+    setCurrentPage("program-selector");
   }
 
-  if (loading || !templates) return <CircularLoader />;
-
-  const selectedPrograms = programs.filter((program) =>
-    selectedProgramIds.includes(program.id)
-  );
-
   return (
-    <Router>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <IGConfigForm igConfig={igConfig} setIgConfig={setIgConfig} />
-          }
-        />
-        <Route
-          path="/program-selector"
-          element={
-            <div className={classes.container}>
-              <TrackerProgramSelector
-                programs={programs}
-                selectedProgramIds={selectedProgramIds}
-                setSelectedProgramIds={setSelectedProgramIds}
-              />
-              <div className={classes.buttonRow}>
-                <Button
-                  onClick={() => navigate("/")}
-                  secondary
-                >
-                  IG Configuration
-                </Button>
-                <Button
-                  primary
-                  onClick={() => exportMetadata(selectedPrograms, templates, igConfig)}
-                  disabled={selectedPrograms.length === 0 || !igConfig || !templates}
-                >
-                  Download FHIR IG
-                </Button>
-              </div>
-            </div>
-          }
-        />
-      </Routes>
-    </Router>
-  );
+    <div>
+    {currentPage === "config" && (
+      <IGConfigPage igConfig={igConfig} setIgConfig={handleFormSubmit} />
+    )}
+    {currentPage === "program-selector" && (
+      <TrackerProgramSelectorPage
+        igConfig={igConfig}
+        onBack={() => setCurrentPage("config")}
+      />
+    )}
+  </div>
+);
 };
 
 export default MyApp;
