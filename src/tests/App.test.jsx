@@ -1,14 +1,13 @@
 import { CustomDataProvider } from '@dhis2/app-runtime'
 import React from 'react'
-import ReactDOM from 'react-dom'
-import { act } from 'react-dom/test-utils'
-import App from '../App.jsx'
+import { createRoot } from 'react-dom/client'
+import MyApp from '../App.jsx'
 
 beforeEach(() => {
     global.fetch = jest.fn((url) => {
         if (url.includes('ProgramLogicalModel.fsh.handlebars')) {
             return Promise.resolve({
-                text: () => Promise.resolve('Template content')
+                text: () => Promise.resolve('Template content'),
             });
         }
         return Promise.reject(new Error(`Unhandled request: ${url}`));
@@ -20,16 +19,15 @@ afterEach(() => {
     delete global.fetch;
 });
 
-it('renders without crashing', async () => {
-    const div = document.createElement('div')
-    await act(async () => {
-        ReactDOM.render(
-            <CustomDataProvider>
-                <App />
-            </CustomDataProvider>,
-            div
-        );
-    });
+it('renders without crashing', () => {
+    const div = document.createElement('div');
+    const root = createRoot(div);
 
-    ReactDOM.unmountComponentAtNode(div)
+    root.render(
+        <CustomDataProvider>
+            <MyApp />
+        </CustomDataProvider>
+    );
+
+    root.unmount();
 });

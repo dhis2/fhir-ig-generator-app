@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import TrackerProgramSelector from "../components/TrackerProgramSelector";
 import { exportMetadata } from "../utils/exportMetadata";
 import { useTrackerPrograms } from "../hooks/useTrackerPrograms";
