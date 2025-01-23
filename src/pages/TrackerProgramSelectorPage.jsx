@@ -21,7 +21,7 @@ const TrackerProgramSelectorPage = ({ igConfig, onBack }) => {
 
     if (loading || !templates) {
         return (
-            <div className={classes.container}>
+            <div className={classes.centerWrapper}>
                 <CircularLoader />
             </div>);
     }
@@ -37,6 +37,7 @@ const TrackerProgramSelectorPage = ({ igConfig, onBack }) => {
     return (
         <div className={classes.centerWrapper}>
             <div className={classes.container}>
+                <h2 className={classes.title}>Tracker Program Selector</h2>
                 <TrackerProgramSelector
                     programs={programs}
                     selectedProgramIds={selectedProgramIds}
