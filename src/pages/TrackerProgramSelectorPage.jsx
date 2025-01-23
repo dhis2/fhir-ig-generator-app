@@ -20,7 +20,10 @@ const TrackerProgramSelectorPage = ({ igConfig, onBack }) => {
     }
 
     if (loading || !templates) {
-        return <CircularLoader />;
+        return (
+            <div className={classes.container}>
+                <CircularLoader />
+            </div>);
     }
 
     const selectedPrograms = programs.filter((program) =>
@@ -32,23 +35,25 @@ const TrackerProgramSelectorPage = ({ igConfig, onBack }) => {
     };
 
     return (
-        <div className={classes.container}>
-            <TrackerProgramSelector
-                programs={programs}
-                selectedProgramIds={selectedProgramIds}
-                setSelectedProgramIds={setSelectedProgramIds}
-            />
-            <div className={classes.buttonRow}>
-                <Button onClick={onBack} secondary>
-                    IG Configuration
-                </Button>
-                <Button
-                    primary
-                    onClick={handleDownloadClick}
-                    disabled={selectedPrograms.length === 0 || !templates}
-                >
-                    Download FHIR IG
-                </Button>
+        <div className={classes.centerWrapper}>
+            <div className={classes.container}>
+                <TrackerProgramSelector
+                    programs={programs}
+                    selectedProgramIds={selectedProgramIds}
+                    setSelectedProgramIds={setSelectedProgramIds}
+                />
+                <div className={classes.buttonRow}>
+                    <Button onClick={onBack} secondary>
+                        IG Configuration
+                    </Button>
+                    <Button
+                        primary
+                        onClick={handleDownloadClick}
+                        disabled={selectedPrograms.length === 0 || !templates}
+                    >
+                        Download FHIR IG
+                    </Button>
+                </div>
             </div>
         </div>
     );
