@@ -53,11 +53,11 @@ const IGConfigForm = ({ igConfig, onSubmit }) => {
                   validate={hasValue}
                   helpText="Default: draft"
                   options={[
-                                  { label: 'draft', value: 'draft' },
-                                  { label: 'active', value: 'active' },
-                                  { label: 'retired', value: 'retired' },
-                                  { label: 'unknown', value: 'unknown' },
-                              ]}
+                    { label: 'draft', value: 'draft' },
+                    { label: 'active', value: 'active' },
+                    { label: 'retired', value: 'retired' },
+                    { label: 'unknown', value: 'unknown' },
+                  ]}
                 />
 
                 <ReactFinalForm.Field
@@ -100,11 +100,12 @@ const IGConfigForm = ({ igConfig, onSubmit }) => {
                   helpText="Default: https://dhis2.org"
                 />
               </div>
-
-              <div className={styles.button}>
-                <Button type="submit" primary large>
-                  Save & Continue
-                </Button>
+              <div className={styles.buttonRow}>
+                <div className={styles.button}>
+                  <Button type="submit" secondary>
+                    Next
+                  </Button>
+                </div>
               </div>
             </form>
           )}

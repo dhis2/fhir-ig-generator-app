@@ -21,20 +21,20 @@ const MyApp = () => {
     setIgConfig(values);
     setCurrentPage("program-selector");
   }
-
+  
   return (
     <div>
-    {currentPage === "config" && (
-      <IGConfigPage igConfig={igConfig} setIgConfig={handleFormSubmit} />
-    )}
-    {currentPage === "program-selector" && (
-      <TrackerProgramSelectorPage
-        igConfig={igConfig}
-        onBack={() => setCurrentPage("config")}
-      />
-    )}
-  </div>
-);
+      {currentPage === "config" && (
+        <IGConfigPage igConfig={igConfig} setIgConfig={handleFormSubmit} />
+      )}
+      {currentPage === "program-selector" && (
+        <TrackerProgramSelectorPage
+          igConfig={igConfig}
+          onBack={() => setCurrentPage("config")}
+        />
+      )}
+    </div>
+  );
 };
 
 export default MyApp;

@@ -37,6 +37,11 @@
     box-sizing: border-box;
 }
 
+.buttonRow{
+    display: flex;
+    justify-content: flex-end;
+}
+
 .button {
     margin-top: 20px;
     text-align: center;

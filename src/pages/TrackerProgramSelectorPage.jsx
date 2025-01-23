@@ -45,7 +45,7 @@ const TrackerProgramSelectorPage = ({ igConfig, onBack }) => {
                 />
                 <div className={classes.buttonRow}>
                     <Button onClick={onBack} secondary>
-                        IG Configuration
+                        Previous
                     </Button>
                     <Button
                         primary

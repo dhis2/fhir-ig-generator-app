@@ -4,20 +4,19 @@
     align-items: center;
     height: 100vh;
     background-color: #f3f5f7;
-    padding: 20px; 
 }
 
 .container {
     background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 740px;
+    max-width: 725px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     width: 100%;
-    padding: 15px;
+    padding: 20px;
 }
 
 .title {
@@ -32,9 +31,8 @@
 .buttonRow {
     margin-top: 20px;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 5px;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .downloadButton {
