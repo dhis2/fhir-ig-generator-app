@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import IGConfigPage from "./pages/IGConfigPage"
-import TrackerProgramSelectorPage from "./pages/TrackerProgramSelectorPage"
+import { RouterProvider } from "react-router-dom";
+import createAppRouter from "./routes/AppRouter";
 
-const MyApp = () => {
-  const [currentPage, setCurrentPage] = useState("config");
+const App = () => {
   const [igConfig, setIgConfig] = useState({
     id: "fhir.example",
     name: "Example IG",
@@ -17,24 +16,10 @@ const MyApp = () => {
     },
   });
 
-  const handleFormSubmit = (values) => {
-    setIgConfig(values);
-    setCurrentPage("program-selector");
-  }
-  
-  return (
-    <div>
-      {currentPage === "config" && (
-        <IGConfigPage igConfig={igConfig} setIgConfig={handleFormSubmit} />
-      )}
-      {currentPage === "program-selector" && (
-        <TrackerProgramSelectorPage
-          igConfig={igConfig}
-          onBack={() => setCurrentPage("config")}
-        />
-      )}
-    </div>
-  );
+  const router = createAppRouter({ igConfig, setIgConfig });
+
+  return <RouterProvider router={router} />;
+
 };
 
-export default MyApp;
+export default App;

@@ -5,8 +5,10 @@ import { useTrackerPrograms } from "../hooks/useTrackerPrograms";
 import { useTemplates } from "../hooks/useTemplates";
 import { NoticeBox, CircularLoader, Button } from "@dhis2/ui";
 import classes from "./TrackerProgramSelectorPage.module.css";
+import { useNavigate } from "react-router-dom";
 
-const TrackerProgramSelectorPage = ({ igConfig, onBack }) => {
+const TrackerProgramSelectorPage = ({ igConfig }) => {
+    const navigate = useNavigate();
     const [selectedProgramIds, setSelectedProgramIds] = useState([]);
     const { programs, error: programsError, loading } = useTrackerPrograms();
     const { templates, error: templatesError } = useTemplates();
@@ -44,7 +46,7 @@ const TrackerProgramSelectorPage = ({ igConfig, onBack }) => {
                     setSelectedProgramIds={setSelectedProgramIds}
                 />
                 <div className={classes.buttonRow}>
-                    <Button onClick={onBack} secondary>
+                    <Button onClick={() => navigate("/")} secondary>
                         Previous
                     </Button>
                     <Button
