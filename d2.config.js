@@ -3,7 +3,7 @@ const config = {
     type: 'app',
     title: "FHIR IG Generator",
     entryPoints: {
-        app: './src/App.js',
+        app: './src/App.jsx',
     },
     minDHIS2Version: '2.39'
 }

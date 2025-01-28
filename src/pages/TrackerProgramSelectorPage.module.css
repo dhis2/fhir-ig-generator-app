@@ -4,23 +4,19 @@
     align-items: center;
     height: 100vh;
     background-color: #f3f5f7;
-    padding: 20px; 
 }
 
 .container {
     background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 900px;
+    max-width: 725px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     width: 100%;
     padding: 20px;
-}
-
-.gridContainer {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    align-items: start;
 }
 
 .title {
@@ -32,27 +28,13 @@
     font-size: 1.5rem;
 }
 
-.inputField {
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.buttonRow{
-    display: flex;
-    justify-content: flex-end;
-}
-
-.button {
+.buttonRow {
     margin-top: 20px;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
 
-.errorMessage {
-    color: red;
-}
-
-@media (max-width: 768px) {
-    .gridContainer {
-        grid-template-columns: 1fr;
-    }
+.downloadButton {
+    margin-top: 20px;
 }
