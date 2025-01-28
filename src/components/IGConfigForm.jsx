@@ -11,7 +11,7 @@ const IGConfigForm = ({ igConfig, onSubmit }) => {
           onSubmit={onSubmit}
           initialValues={igConfig}
         >
-          {({ handleSubmit: formSubmit }) => (
+          {({ handleSubmit: formSubmit, invalid }) => (
             <form onSubmit={formSubmit}>
               <div className={styles.gridContainer}>
                 <ReactFinalForm.Field
@@ -21,7 +21,7 @@ const IGConfigForm = ({ igConfig, onSubmit }) => {
                   component={InputFieldFF}
                   className={styles.inputField}
                   validate={hasValue}
-                  helpText="The unique identifier for the IG. Default: fhir.example"
+                  helpText="The unique identifier for the IG. Example: fhir.example"
                 />
 
                 <ReactFinalForm.Field
@@ -31,7 +31,7 @@ const IGConfigForm = ({ igConfig, onSubmit }) => {
                   component={InputFieldFF}
                   className={styles.inputField}
                   validate={hasValue}
-                  helpText="Default: ExampleIG"
+                  helpText="Example: ExampleIG"
                 />
 
                 <ReactFinalForm.Field
@@ -41,7 +41,7 @@ const IGConfigForm = ({ igConfig, onSubmit }) => {
                   component={InputFieldFF}
                   className={styles.inputField}
                   validate={hasValue}
-                  helpText="Default: http://example.org"
+                  helpText="Example: http://example.org"
                 />
 
                 <ReactFinalForm.Field
@@ -51,7 +51,7 @@ const IGConfigForm = ({ igConfig, onSubmit }) => {
                   component={SingleSelectFieldFF}
                   className={styles.inputField}
                   validate={hasValue}
-                  helpText="Default: draft"
+                  helpText="Example: draft"
                   options={[
                     { label: 'draft', value: 'draft' },
                     { label: 'active', value: 'active' },
@@ -67,7 +67,7 @@ const IGConfigForm = ({ igConfig, onSubmit }) => {
                   component={InputFieldFF}
                   className={styles.inputField}
                   validate={hasValue}
-                  helpText="Default: 0.1.0"
+                  helpText="Example: 0.1.0"
                 />
 
                 <ReactFinalForm.Field
@@ -77,7 +77,7 @@ const IGConfigForm = ({ igConfig, onSubmit }) => {
                   component={InputFieldFF}
                   className={styles.inputField}
                   validate={hasValue}
-                  helpText="Default: ci-build"
+                  helpText="Example: ci-build"
                 />
 
                 <ReactFinalForm.Field
@@ -87,7 +87,7 @@ const IGConfigForm = ({ igConfig, onSubmit }) => {
                   component={InputFieldFF}
                   className={styles.inputField}
                   validate={hasValue}
-                  helpText="Default: DHIS2"
+                  helpText="Example: http://example.org"
                 />
 
                 <ReactFinalForm.Field
@@ -97,12 +97,12 @@ const IGConfigForm = ({ igConfig, onSubmit }) => {
                   component={InputFieldFF}
                   className={styles.inputField}
                   validate={hasValue}
-                  helpText="Default: https://dhis2.org"
+                  helpText="Example: http://example.org/example-publisher"
                 />
               </div>
               <div className={styles.buttonRow}>
                 <div className={styles.button}>
-                  <Button type="submit" secondary>
+                  <Button type="submit" secondary disabled={invalid}>
                     Next
                   </Button>
                 </div>
