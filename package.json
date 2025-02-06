@@ -11,12 +11,12 @@
     "deploy": "d2-app-scripts deploy"
   },
   "devDependencies": {
-    "@dhis2/cli-app-scripts": "^12.0.0",
-    "@dhis2/cli-style": "^10.7.5"
+    "@dhis2/cli-app-scripts": "^12.3.0",
+    "@dhis2/cli-style": "^10.7.6"
   },
   "dependencies": {
-    "@dhis2/app-runtime": "^3.12.1",
-    "@dhis2/ui": "^10.1.10",
+    "@dhis2/app-runtime": "^3.13.1",
+    "@dhis2/ui": "^10.1.11",
     "@testing-library/react": "16.0.0",
     "dhis2-ig-generator-app": "file:",
     "handlebars": "^4.7.8",
