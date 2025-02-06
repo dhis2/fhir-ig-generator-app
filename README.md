@@ -1,3 +1,4 @@
+![React 18](https://img.shields.io/badge/react-18-blue)
 ## DHIS2 Implementation Guide Generator App
 The IG Generator app enables users to create FHIR Implementation Guides (IGs) based on DHIS2 tracker program metadata. The app allows users to set the configuration of an IG, select tracker programs, and transform the DHIS2 tracker metadata into FHIR artifacts. The app generates a local IG bundle, ready to be built with external tools like [SUSHI](https://github.com/FHIR/sushi). A DHIS2 instance with tracker metadata is required, and the app is designed as a tool to simplify IG authoring.
 
