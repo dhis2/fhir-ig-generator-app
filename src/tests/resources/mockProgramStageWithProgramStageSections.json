@@ -36,9 +36,10 @@
                         }
                     ]
                 },
-                "displayName": "TB CS - Treatment outcome"
+                "displayName": "TB CS - Treatment outcome",
+                "id": "wtZuz8Im69G"
             },
-            "compulsory": false
+            "compulsory": true
         },
         {
             "dataElement": {
@@ -59,9 +60,10 @@
                         }
                     ]
                 },
-                "displayName": "TB CS - Outcome - Reason for case denotification"
+                "displayName": "TB CS - Outcome - Reason for case denotification",
+                "id": "eMNDiZHLDaq"
             },
-            "compulsory": false
+            "compulsory": true
         },
         {
             "dataElement": {
@@ -69,7 +71,8 @@
                 "shortName": "Duplicate's record number",
                 "formName": "Provide duplicate's record number",
                 "valueType": "TEXT",
-                "displayName": "TB CS - Outcome - Duplicate's record number"
+                "displayName": "TB CS - Outcome - Duplicate's record number",
+                "id": "USgo6lDw8By"
             },
             "compulsory": false
         },
@@ -79,7 +82,8 @@
                 "shortName": "Tx outcome delay",
                 "formName": "Treatment outcome delay (weeks)",
                 "valueType": "NUMBER",
-                "displayName": "TB CS - Treatment outcome delay (weeks)"
+                "displayName": "TB CS - Treatment outcome delay (weeks)",
+                "id": "AycLmJbEv9M"
             },
             "compulsory": false
         },
@@ -89,7 +93,8 @@
                 "shortName": "Not TB case (explanation)",
                 "formName": "Provide evidence for denotifying the case",
                 "valueType": "LONG_TEXT",
-                "displayName": "TB CS - Outcome - Not TB case (explanation)"
+                "displayName": "TB CS - Outcome - Not TB case (explanation)",
+                "id": "eU9zyTHI4oq"
             },
             "compulsory": false
         },
@@ -99,11 +104,44 @@
                 "shortName": "Not TB",
                 "formName": "Denotify the case",
                 "valueType": "TRUE_ONLY",
-                "displayName": "TB CS - Outcome - Case denotification"
+                "displayName": "TB CS - Outcome - Case denotification",
+                "id": "Lj1yD6S1Qio"
             },
             "compulsory": false
         }
     ],
     "displayName": "Outcome",
-    "repeatable": false
+    "repeatable": false,
+    "programStageSections": [
+        {
+            "name": "Outcome",
+            "dataElements": [
+                {
+                    "id": "wtZuz8Im69G"
+                },
+                {
+                    "id": "Lj1yD6S1Qio"
+                },
+                {
+                    "id": "eMNDiZHLDaq"
+                },
+                {
+                    "id": "eU9zyTHI4oq"
+                },
+                {
+                    "id": "USgo6lDw8By"
+                }
+            ],
+            "displayFormName": "Outcome"
+        },
+        {
+            "name": "Outcome status",
+            "dataElements": [
+                {
+                    "id": "AycLmJbEv9M"
+                }
+            ],
+            "displayFormName": "Outcome status"
+        }
+    ]
 }

@@ -171,26 +171,20 @@ export const isRepeatable = (repeatable) => {
 
 export const extractOptionSetNames = (programStage) => {
   const optionSets = new Set();
-
-  if (programStage.programStageSections) {
-    programStage.programStageSections.forEach((section) => {
-      section.dataElements?.forEach((de) => {
-        if (de.optionSet?.name) {
-          optionSets.add(de.optionSet.name);
-        }
-      });
+  programStage.programStageDataElements.forEach((psde) => {
+    if (psde.dataElement?.optionSet?.name) {
+      optionSets.add(psde.dataElement.optionSet.name);
+    }
     });
-  } else {
-    programStage.programStageDataElements.forEach((psde) => {
-      if (psde.dataElement?.optionSet?.name) {
-        optionSets.add(psde.dataElement.optionSet.name);
-      }
-    });
-  }
   return Array.from(optionSets);
 };
 
 export const registerHelpers = () => {
+
+  Handlebars.registerHelper('ifEquals', function(arg1, arg2, options) {
+    return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+  });
+
   Handlebars.registerHelper("toPascalCase", function (str) {
     return toPascalCase(str);
   });
