@@ -1,5 +1,4 @@
 CodeSystem: AgeCategoryCS
-Id: age-category-cs
 Title: "Age category"
 * #"0-14 years" "0-14 years"
 * #"15-19 years" "15-19 years"

@@ -1,0 +1,24 @@
+Instance: {{toPascalCase name}}Questionnaire
+InstanceOf: Questionnaire
+Title: "{{name}} Questionnaire"
+Description: "{{description}}"
+Usage: #definition
+* status = #draft
+* experimental = false
+
+{{#each (extractOptionSetNames this)}}
+* contained[+] = {{toPascalCase this}}VS
+{{/each}}
+
+{{#each programStageDataElements}}
+* item[+].linkId = "{{{toCamelCase dataElement.name}}}"
+* item[=].text = "{{#if dataElement.formName}}{{{dataElement.formName}}}{{else}}{{{dataElement
+.name}}}{{/if}}"
+* item[=].type = #{{#if dataElement.optionSet}}choice{{else}}{{toQuestionnaireItemType dataElement.valueType false}}{{/if}}
+* item[=].repeats = false
+* item[=].required = {{compulsory}}
+{{#if dataElement.optionSet}}
+* item[=].answerValueSet = "#{{toPascalCase dataElement.optionSet.name}}VS"
+{{/if}}
+
+{{/each}}

@@ -36,10 +36,13 @@ const generateFshFilesForProgram = (program, templates, igArchive) => {
     programStageLogicalModelTemplate,
     codeSystemTemplate,
     valueSetTemplate,
+    questionnaireTemplate,
   } = templates;
+
   const programFsh = generateFsh(program, programLogicalModelTemplate);
   const logicalModelFileName = toPascalCase(program.name);
   igArchive.file(`input/fsh/models/${logicalModelFileName}.fsh`, programFsh);
+
   program.programTrackedEntityAttributes.forEach((attribute) => {
     var attr = attribute.trackedEntityAttribute;
     if (attr.optionSet) {
@@ -53,16 +56,9 @@ const generateFshFilesForProgram = (program, templates, igArchive) => {
       igArchive.file(`input/fsh/valuesets/${fhirFileName}VS.fsh`, valueSetFsh);
     }
   });
+
   program.programStages.forEach((stage) => {
-    const programStageFsh = generateFsh(
-      stage,
-      programStageLogicalModelTemplate
-    );
-    const logicalModelFileName = toPascalCase(stage.name);
-    igArchive.file(
-      `input/fsh/models/${logicalModelFileName}.fsh`,
-      programStageFsh
-    );
+
     stage.programStageDataElements.forEach(({ dataElement }) => {
       if (dataElement.optionSet) {
         const fhirFileName = toPascalCase(dataElement.optionSet.name);
@@ -84,6 +80,24 @@ const generateFshFilesForProgram = (program, templates, igArchive) => {
         );
       }
     });
+    
+    const logicalModelFileName = toPascalCase(stage.name);
+    const questionnaireFileName = `${toPascalCase(stage.name)}Questionnaire`
+
+    const programStageFsh = generateFsh(
+      stage,
+      programStageLogicalModelTemplate
+    );
+    igArchive.file(
+      `input/fsh/models/${logicalModelFileName}.fsh`,
+      programStageFsh
+    );
+
+    const questionnaireFsh = generateFsh(stage, questionnaireTemplate);
+    igArchive.file(
+      `input/fsh/questionnaires/${questionnaireFileName}.fsh`,
+      questionnaireFsh
+    );
   });
 };
 
@@ -102,8 +116,7 @@ const updateSushiConfigFile = async (igArchive, igConfig) => {
 };
 
 const updateIgIniFile = async (igArchive, igId) => {
-  const igIniFile = await igArchive.file("ig.ini").async("string");
-  igIniFile.replace("fhir.example", igId);
+  let igIniFile = await igArchive.file("ig.ini").async("string");
   const updatedIniFile = igIniFile.replace("fhir.example", igId);
   igArchive.file("ig.ini", updatedIniFile);
 };
