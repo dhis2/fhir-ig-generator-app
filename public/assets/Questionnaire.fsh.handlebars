@@ -14,7 +14,7 @@ Usage: #definition
 * item[+].linkId = "{{{toCamelCase dataElement.name}}}"
 * item[=].text = "{{#if dataElement.formName}}{{{dataElement.formName}}}{{else}}{{{dataElement
 .name}}}{{/if}}"
-* item[=].type = #{{#if dataElement.optionSet}}choice{{else}}{{toQuestionnaireItemType dataElement.valueType false}}{{/if}}
+* item[=].type = #{{#if dataElement.optionSet}}choice{{else}}{{toQuestionnaireItemType dataElement.valueType}}{{/if}}
 * item[=].repeats = false
 * item[=].required = {{compulsory}}
 {{#if dataElement.optionSet}}
