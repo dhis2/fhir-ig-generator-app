@@ -5,6 +5,7 @@ export const templateFileNames = [
     { key: 'programStageLogicalModelTemplate', fileName: 'ProgramStageLogicalModel.fsh.handlebars' },
     { key: 'codeSystemTemplate', fileName: 'CodeSystem.fsh.handlebars' },
     { key: 'valueSetTemplate', fileName: 'ValueSet.fsh.handlebars' },
+    { key: 'questionnaireTemplate', fileName: 'Questionnaire.fsh.handlebars'},
 ]
 
 export const useTemplates = () => {

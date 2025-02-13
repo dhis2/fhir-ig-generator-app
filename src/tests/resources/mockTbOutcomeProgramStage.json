@@ -1,0 +1,109 @@
+{
+    "name": "Outcome",
+    "programStageDataElements": [
+        {
+            "dataElement": {
+                "name": "TB CS - Treatment outcome",
+                "shortName": "Tx outcome",
+                "formName": "Treatment outcome",
+                "valueType": "TEXT",
+                "optionSet": {
+                    "name": "TB CS - Treatment outcome",
+                    "options": [
+                        {
+                            "code": "CURED",
+                            "name": "Cured"
+                        },
+                        {
+                            "code": "COMPLETED",
+                            "name": "Completed"
+                        },
+                        {
+                            "code": "FAILURE",
+                            "name": "Failed"
+                        },
+                        {
+                            "code": "DIED",
+                            "name": "Died"
+                        },
+                        {
+                            "code": "LOST_TO_FOLLOW_UP",
+                            "name": "Lost to follow-up"
+                        },
+                        {
+                            "code": "NOT_EVALUATED",
+                            "name": "Not evaluated"
+                        }
+                    ]
+                },
+                "displayName": "TB CS - Treatment outcome"
+            },
+            "compulsory": false
+        },
+        {
+            "dataElement": {
+                "name": "TB CS - Outcome - Reason for case denotification",
+                "shortName": "Denotification reason",
+                "formName": "Reason for denotification",
+                "valueType": "TEXT",
+                "optionSet": {
+                    "name": "TB CS - Denotification reasons",
+                    "options": [
+                        {
+                            "code": "NOT_TB",
+                            "name": "Not a TB Case"
+                        },
+                        {
+                            "code": "DUPLICATE",
+                            "name": "Duplicate"
+                        }
+                    ]
+                },
+                "displayName": "TB CS - Outcome - Reason for case denotification"
+            },
+            "compulsory": false
+        },
+        {
+            "dataElement": {
+                "name": "TB CS - Outcome - Duplicate's record number",
+                "shortName": "Duplicate's record number",
+                "formName": "Provide duplicate's record number",
+                "valueType": "TEXT",
+                "displayName": "TB CS - Outcome - Duplicate's record number"
+            },
+            "compulsory": false
+        },
+        {
+            "dataElement": {
+                "name": "TB CS - Treatment outcome delay (weeks)",
+                "shortName": "Tx outcome delay",
+                "formName": "Treatment outcome delay (weeks)",
+                "valueType": "NUMBER",
+                "displayName": "TB CS - Treatment outcome delay (weeks)"
+            },
+            "compulsory": false
+        },
+        {
+            "dataElement": {
+                "name": "TB CS - Outcome - Not TB case (explanation)",
+                "shortName": "Not TB case (explanation)",
+                "formName": "Provide evidence for denotifying the case",
+                "valueType": "LONG_TEXT",
+                "displayName": "TB CS - Outcome - Not TB case (explanation)"
+            },
+            "compulsory": false
+        },
+        {
+            "dataElement": {
+                "name": "TB CS - Outcome - Case denotification",
+                "shortName": "Not TB",
+                "formName": "Denotify the case",
+                "valueType": "TRUE_ONLY",
+                "displayName": "TB CS - Outcome - Case denotification"
+            },
+            "compulsory": false
+        }
+    ],
+    "displayName": "Outcome",
+    "repeatable": false
+}

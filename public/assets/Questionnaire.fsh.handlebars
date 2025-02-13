@@ -1,0 +1,48 @@
+Instance: {{toPascalCase name}}Questionnaire
+InstanceOf: Questionnaire
+Title: "{{name}} Questionnaire"
+Description: "{{description}}"
+Usage: #definition
+* status = #draft
+* experimental = false
+
+{{#each (extractOptionSetNames this)}}
+* contained[+] = {{toPascalCase this}}VS
+{{/each}}
+
+{{#if programStageSections.length}}
+{{#each programStageSections}}
+* item[+].linkId = "{{toCamelCase name }}"
+* item[=].text = "{{name}}"
+* item[=].type = #group
+* item[=]
+{{#each dataElements}}
+  {{#each ../../programStageDataElements}}
+    {{#ifEquals dataElement.id ../this.id}}
+  * item[+].linkId = "{{toCamelCase dataElement.name}}"
+  * item[=].text = "{{#if dataElement.formName}}{{{dataElement.formName}}}{{else}}{{{dataElement.name}}}{{/if}}"
+  * item[=].type = #{{#if dataElement.optionSet}}choice{{else}}{{toQuestionnaireItemType dataElement.valueType}}{{/if}}
+  * item[=].repeats = false
+  * item[=].required = {{compulsory}}
+  {{#if dataElement.optionSet}}
+  * item[=].answerValueSet = "#{{toPascalCase dataElement.optionSet.name}}VS"
+  {{/if}}
+
+{{/ifEquals}}
+  {{/each}}
+{{/each}}
+{{/each}}
+
+{{else}}
+{{#each programStageDataElements}}
+* item[+].linkId = "{{{toCamelCase dataElement.name}}}"
+* item[=].text = "{{#if dataElement.formName}}{{{dataElement.formName}}}{{else}}{{{dataElement.name}}}{{/if}}"
+* item[=].type = #{{#if dataElement.optionSet}}choice{{else}}{{toQuestionnaireItemType dataElement.valueType}}{{/if}}
+* item[=].repeats = false
+* item[=].required = {{compulsory}}
+{{#if dataElement.optionSet}}
+* item[=].answerValueSet = "#{{toPascalCase dataElement.optionSet.name}}VS"
+{{/if}}
+
+{{/each}}
+{{/if}}

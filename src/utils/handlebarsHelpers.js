@@ -1,3 +1,4 @@
+import { arrayWithIdObjects } from "@dhis2/ui";
 import Handlebars from "handlebars";
 
 export const toPascalCase = (str) => {
@@ -48,9 +49,9 @@ export const toFhirDataElementName = (dhis2Object) => {
     throw new Error("Element must have a name property.");
   }
 
-  const maxLength = 64; 
+  const maxLength = 64;
   const tryNames = [dhis2Object.formName, dhis2Object.displayName, dhis2Object.shortName, dhis2Object.name].filter(Boolean);
-  
+
   for (let name of tryNames) {
     const camelCaseName = toCamelCase(name);
     if (camelCaseName.length <= maxLength) {
@@ -62,6 +63,49 @@ export const toFhirDataElementName = (dhis2Object) => {
     "Both formName and shortName are too long to be a valid FHIR data element name."
   );
 };
+
+export const toQuestionnaireItemType = (dhis2ValueType) => {
+  switch (dhis2ValueType) {
+    case "TEXT":
+    case "LONG_TEXT":
+    case "EMAIL":
+    case "PHONE_NUMBER":
+      return "string";
+    case "NUMBER":
+      return "decimal";
+    case "INTEGER":
+      return "integer";
+    case "INTEGER_POSITIVE":
+      return "integer";
+    case "INTEGER_NEGATIVE":
+      return "integer";
+    case "INTEGER_ZERO_OR_POSITIVE":
+      return "integer";
+    case "PERCENTAGE":
+      return "decimal";
+    case "UNIT_INTERVAL":
+      return "decimal";
+    case "DATE":
+      return "date";
+    case "DATETIME":
+      return "dateTime";
+    case "TIME":
+      return "time";
+    case "BOOLEAN":
+      return "boolean";
+    case "TRUE_ONLY":
+      return "boolean";
+    case "URL":
+      return "url";
+    case "FILE_RESOURCE":
+    case "IMAGE":
+      return "attachment";
+    case "AGE":
+      return "Age";
+    default:
+      return "string";
+  }
+}
 
 export const toFhirDataType = (dhis2ValueType, isOptionSet = false) => {
   if (isOptionSet) {
@@ -125,7 +169,22 @@ export const isRepeatable = (repeatable) => {
   return repeatable ? "*" : "1";
 };
 
+export const extractOptionSetNames = (programStage) => {
+  const optionSets = new Set();
+  programStage.programStageDataElements.forEach((psde) => {
+    if (psde.dataElement?.optionSet?.name) {
+      optionSets.add(psde.dataElement.optionSet.name);
+    }
+    });
+  return Array.from(optionSets);
+};
+
 export const registerHelpers = () => {
+
+  Handlebars.registerHelper('ifEquals', function(arg1, arg2, options) {
+    return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+  });
+
   Handlebars.registerHelper("toPascalCase", function (str) {
     return toPascalCase(str);
   });
@@ -137,6 +196,13 @@ export const registerHelpers = () => {
   Handlebars.registerHelper("toCamelCase", function (str) {
     return toCamelCase(str);
   });
+
+  Handlebars.registerHelper(
+    "toQuestionnaireItemType",
+    function (dhis2ValueType) {
+      return toQuestionnaireItemType(dhis2ValueType);
+    }
+  );
 
   Handlebars.registerHelper(
     "toFhirDataType",
@@ -159,5 +225,9 @@ export const registerHelpers = () => {
 
   Handlebars.registerHelper("toFhirDataElementName", function (dhis2Object) {
     return toFhirDataElementName(dhis2Object);
+  });
+
+  Handlebars.registerHelper("extractOptionSetNames", function (programStage, options) {
+    return extractOptionSetNames(programStage);
   });
 };
