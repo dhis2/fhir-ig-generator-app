@@ -1,17 +1,19 @@
-Logical: {{toPascalCase name}}
-Title: "{{name}}"
+{{#with this as |trackerProgram|}}
+Logical: {{toPascalCase trackerProgram.name}}
+Title: "{{trackerProgram.name}}"
 Parent: Base
-{{#if description}}
-Description: "{{description}}"
+{{#if trackerProgram.description}}
+Description: "{{trackerProgram.description}}"
 {{/if}}
-* enrollmentDate 1..1 date "{{enrollmentDateLabel}}"
-* incidentDate 0..1 date "{{incidentDateLabel}}"
-{{#programTrackedEntityAttributes}}
-* {{toFhirDataElementName trackedEntityAttribute}} {{toFhirCardinality mandatory}}..1 {{toFhirDataType trackedEntityAttribute.valueType trackedEntityAttribute.optionSet}} "{{{toFhirElementDescription trackedEntityAttribute}}}"
-{{#if trackedEntityAttribute.optionSet}}
-* {{toFhirDataElementName trackedEntityAttribute}} from {{toPascalCase trackedEntityAttribute.optionSet.name}}VS (required)
+* enrollmentDate 1..1 date "{{trackerProgram.enrollmentDateLabel}}"
+* incidentDate 0..1 date "{{trackerProgram.incidentDateLabel}}"
+{{#trackerProgram.programTrackedEntityAttributes as |programTEA|}}
+* {{toFhirDataElementName programTEA.trackedEntityAttribute}} {{toFhirCardinality programTEA.mandatory}}..1 {{toFhirDataType programTEA.trackedEntityAttribute.valueType programTEA.trackedEntityAttribute.optionSet}} "{{{toFhirElementDescription programTEA.trackedEntityAttribute}}}"
+{{#if programTEA.trackedEntityAttribute.optionSet}}
+* {{toFhirDataElementName programTEA.trackedEntityAttribute}} from {{toPascalCase programTEA.trackedEntityAttribute.optionSet.name}}VS (required)
 {{/if}}
-{{/programTrackedEntityAttributes}}
-{{#programStages}}
-* {{toCamelCase name}} 0..{{isRepeatable repeatable}} {{toPascalCase name}} "{{{toFhirElementDescription this}}}"
+{{/trackerProgram.programTrackedEntityAttributes}}
+{{#programStages as |programStage|}}
+* {{toCamelCase programStage.name}} 0..{{isRepeatable programStage.repeatable}} {{toPascalCase programStage.name}} "{{{toFhirElementDescription programStage}}}"
 {{/programStages}}
+{{/with}}
