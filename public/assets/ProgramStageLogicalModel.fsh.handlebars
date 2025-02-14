@@ -1,11 +1,11 @@
 {{#with this as |programStage|}}
 Logical: {{toPascalCase programStage.name}}
-Title: "{{programStage.name}}"
+Title: "{{{programStage.name}}}"
 Parent: Base
 {{#if programStage.description}}
-Description: "{{programStage.description}}"
+Description: "{{{programStage.description}}}"
 {{/if}}
-* executionDate 0..1 date "{{programStage.displayExecutionDateLabel}}"
+* executionDate 0..1 date "{{{programStage.displayExecutionDateLabel}}}"
 {{#programStageDataElements as |programStageDataElement|}}
 * {{toFhirDataElementName programStageDataElement.dataElement}} {{toFhirCardinality programStageDataElement.compulsory}}..1 {{toFhirDataType programStageDataElement.dataElement.valueType programStageDataElement.dataElement.optionSet}} "{{{toFhirElementDescription programStageDataElement.dataElement}}}"
 {{#if programStageDataElement.dataElement.optionSet}}

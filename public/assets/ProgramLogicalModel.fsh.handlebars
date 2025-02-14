@@ -1,12 +1,12 @@
 {{#with this as |trackerProgram|}}
 Logical: {{toPascalCase trackerProgram.name}}
-Title: "{{trackerProgram.name}}"
+Title: "{{{trackerProgram.name}}}"
 Parent: Base
 {{#if trackerProgram.description}}
-Description: "{{trackerProgram.description}}"
+Description: "{{{trackerProgram.description}}}"
 {{/if}}
-* enrollmentDate 1..1 date "{{trackerProgram.enrollmentDateLabel}}"
-* incidentDate 0..1 date "{{trackerProgram.incidentDateLabel}}"
+* enrollmentDate 1..1 date "{{{trackerProgram.enrollmentDateLabel}}}"
+* incidentDate 0..1 date "{{{trackerProgram.incidentDateLabel}}}"
 {{#trackerProgram.programTrackedEntityAttributes as |programTEA|}}
 * {{toFhirDataElementName programTEA.trackedEntityAttribute}} {{toFhirCardinality programTEA.mandatory}}..1 {{toFhirDataType programTEA.trackedEntityAttribute.valueType programTEA.trackedEntityAttribute.optionSet}} "{{{toFhirElementDescription programTEA.trackedEntityAttribute}}}"
 {{#if programTEA.trackedEntityAttribute.optionSet}}

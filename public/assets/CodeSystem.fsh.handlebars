@@ -1,10 +1,10 @@
 {{#with this as |optionSet|}}
 CodeSystem: {{toPascalCase optionSet.name}}CS
-Title: "{{optionSet.name}}"
+Title: "{{{optionSet.name}}}"
 {{#if optionSet.description}}
-Description: "{{optionSet.description}}"
+Description: "{{{optionSet.description}}}"
 {{/if}}
 {{#each optionSet.options as |option|}}
-* #"{{option.code}}" "{{option.name}}"
+* #"{{option.code}}" "{{{option.name}}}"
 {{/each}}
 {{/with}}

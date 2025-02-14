@@ -1,9 +1,9 @@
 {{#with this as |programStage|}}
 Instance: {{toPascalCase programStage.name}}Questionnaire
 InstanceOf: Questionnaire
-Title: "{{programStage.name}} Questionnaire"
+Title: "{{{programStage.name}}} Questionnaire"
 {{#if programStage.description}}
-Description: "{{programStage.description}}"
+Description: "{{{programStage.description}}}"
 {{/if}}
 Usage: #definition
 * status = #draft
@@ -15,8 +15,8 @@ Usage: #definition
 
 {{#if programStageSections.length}}
 {{#each programStageSections as |section|}}
-* item[+].linkId = "{{toCamelCase section.name }}"
-* item[=].text = "{{section.name}}"
+* item[+].linkId = "{{toCamelCase section.name}}"
+* item[=].text = "{{{section.name}}}"
 * item[=].type = #group
 * item[=]
   {{#each section.dataElements as |sectionDataElement|}}
