@@ -47,18 +47,14 @@ export const toFhirDataElementName = (dhis2Object) => {
   }
 
   const maxLength = 64;
-  const tryNames = [dhis2Object.formName, dhis2Object.displayName, dhis2Object.shortName, dhis2Object.name].filter(Boolean);
+  const name = dhis2Object.shortName || dhis2Object.name;
+  const fhirDataElementName = toCamelCase(name);
 
-  for (let name of tryNames) {
-    const camelCaseName = toCamelCase(name);
-    if (camelCaseName.length <= maxLength) {
-      return camelCaseName;
-    }
+  if (fhirDataElementName.length > maxLength) {
+    throw new Error("The chosen name is too long to be a valid FHIR data element name.")
   }
 
-  throw new Error(
-    "Both formName and shortName are too long to be a valid FHIR data element name."
-  );
+  return fhirDataElementName;
 };
 
 export const toQuestionnaireItemType = (dhis2ValueType) => {
@@ -69,7 +65,7 @@ export const toQuestionnaireItemType = (dhis2ValueType) => {
     case "PHONE_NUMBER":
     case "LETTER":
       return "string";
-    
+
     case "INTEGER":
     case "INTEGER_POSITIVE":
     case "INTEGER_NEGATIVE":
@@ -80,15 +76,15 @@ export const toQuestionnaireItemType = (dhis2ValueType) => {
     case "PERCENTAGE":
     case "UNIT_INTERVAL":
       return "decimal";
-    
+
     case "BOOLEAN":
     case "TRUE_ONLY":
       return "boolean";
-    
+
     case "FILE_RESOURCE":
     case "IMAGE":
       return "attachment";
-    
+
     case "DATE":
       return "date";
 
@@ -110,6 +106,7 @@ export const toFhirDataType = (dhis2ValueType, isOptionSet = false) => {
   if (isOptionSet) {
     return "code";
   }
+
   switch (dhis2ValueType) {
     case "TEXT":
     case "LONG_TEXT":
@@ -121,11 +118,11 @@ export const toFhirDataType = (dhis2ValueType, isOptionSet = false) => {
     case "PERCENTAGE":
     case "UNIT_INTERVAL":
       return "decimal";
-    
+
     case "BOOLEAN":
     case "TRUE_ONLY":
       return "boolean";
-    
+
     case "FILE_RESOURCE":
     case "IMAGE":
       return "Attachment";
@@ -156,7 +153,7 @@ export const toFhirDataType = (dhis2ValueType, isOptionSet = false) => {
 
     case "AGE":
       return "Age";
-      
+
     default:
       return "string";
   }
@@ -184,13 +181,13 @@ export const extractOptionSetNames = (programStage) => {
     if (psde.dataElement?.optionSet?.name) {
       optionSets.add(psde.dataElement.optionSet.name);
     }
-    });
+  });
   return Array.from(optionSets);
 };
 
 export const registerHelpers = () => {
 
-  Handlebars.registerHelper('ifEquals', function(arg1, arg2, options) {
+  Handlebars.registerHelper('ifEquals', function (arg1, arg2, options) {
     return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
   });
 

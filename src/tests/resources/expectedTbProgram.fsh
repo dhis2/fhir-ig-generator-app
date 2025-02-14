@@ -27,7 +27,7 @@ Parent: Base
 * heightInCm 0..1 decimal "Height in cm"
 * latitude 0..1 string "Latitude"
 * longitude 0..1 string "Longitude"
-* uniqueId 0..1 string "Unique identiifer"
+* uniqueIdentifier 0..1 string "Unique identiifer"
 * labMonitoring 0..* LabMonitoring "Laboratory monitoring"
 * tbVisit 0..1 TBVisit "Routine TB visit"
 * sputumSmearMicroscopyTest 0..* SputumSmearMicroscopyTest "Sputum smear microscopy test"

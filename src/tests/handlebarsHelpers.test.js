@@ -47,5 +47,5 @@ test('converts DHIS2 objects (data element or TEI attribute) to FHIR data elemen
 
     expect(toFhirDataElementName(validName)).toBe("test");
     expect(toFhirDataElementName(invalidNameValidShortName)).toBe("shortName");
-    expect(() => toFhirDataElementName(invalidNames)).toThrow("Both formName and shortName are too long to be a valid FHIR data element name.");
+    expect(() => toFhirDataElementName(invalidNames)).toThrow("The chosen name is too long to be a valid FHIR data element name.");
 })
