@@ -1,4 +1,3 @@
-import { arrayWithIdObjects } from "@dhis2/ui";
 import Handlebars from "handlebars";
 
 export const toPascalCase = (str) => {
@@ -42,8 +41,6 @@ export const toCamelCase = (str) => {
     .join("");
 };
 
-// TODO: codeSystem id and value set id mappings are equal?
-
 export const toFhirDataElementName = (dhis2Object) => {
   if (!dhis2Object.name) {
     throw new Error("Element must have a name property.");
@@ -70,38 +67,40 @@ export const toQuestionnaireItemType = (dhis2ValueType) => {
     case "LONG_TEXT":
     case "EMAIL":
     case "PHONE_NUMBER":
+    case "LETTER":
       return "string";
-    case "NUMBER":
-      return "decimal";
+    
     case "INTEGER":
-      return "integer";
     case "INTEGER_POSITIVE":
-      return "integer";
     case "INTEGER_NEGATIVE":
-      return "integer";
     case "INTEGER_ZERO_OR_POSITIVE":
       return "integer";
+
+    case "NUMBER":
     case "PERCENTAGE":
-      return "decimal";
     case "UNIT_INTERVAL":
       return "decimal";
-    case "DATE":
-      return "date";
-    case "DATETIME":
-      return "dateTime";
-    case "TIME":
-      return "time";
+    
     case "BOOLEAN":
-      return "boolean";
     case "TRUE_ONLY":
       return "boolean";
-    case "URL":
-      return "url";
+    
     case "FILE_RESOURCE":
     case "IMAGE":
       return "attachment";
-    case "AGE":
-      return "Age";
+    
+    case "DATE":
+      return "date";
+
+    case "DATETIME":
+      return "dateTime";
+
+    case "TIME":
+      return "time";
+
+    case "URL":
+      return "url";
+
     default:
       return "string";
   }
@@ -117,37 +116,47 @@ export const toFhirDataType = (dhis2ValueType, isOptionSet = false) => {
     case "EMAIL":
     case "PHONE_NUMBER":
       return "string";
+
     case "NUMBER":
-      return "decimal";
-    case "INTEGER":
-      return "integer";
-    case "INTEGER_POSITIVE":
-      return "positiveInt";
-    case "INTEGER_NEGATIVE":
-      return "integer";
-    case "INTEGER_ZERO_OR_POSITIVE":
-      return "unsignedInt";
     case "PERCENTAGE":
-      return "decimal";
     case "UNIT_INTERVAL":
       return "decimal";
-    case "DATE":
-      return "date";
-    case "DATETIME":
-      return "dateTime";
-    case "TIME":
-      return "time";
+    
     case "BOOLEAN":
-      return "boolean";
     case "TRUE_ONLY":
       return "boolean";
-    case "URL":
-      return "url";
+    
     case "FILE_RESOURCE":
     case "IMAGE":
       return "Attachment";
+
+    case "INTEGER":
+      return "integer";
+
+    case "INTEGER_POSITIVE":
+      return "positiveInt";
+
+    case "INTEGER_NEGATIVE":
+      return "integer";
+
+    case "INTEGER_ZERO_OR_POSITIVE":
+      return "unsignedInt";
+
+    case "DATE":
+      return "date";
+
+    case "DATETIME":
+      return "dateTime";
+
+    case "TIME":
+      return "time";
+
+    case "URL":
+      return "url";
+
     case "AGE":
       return "Age";
+      
     default:
       return "string";
   }
