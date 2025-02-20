@@ -192,6 +192,10 @@ export const escapeQuotes = (str) => {
 
 export const registerHelpers = () => {
 
+  Handlebars.registerHelper('escapeQuotes', function(str) {
+    return escapeQuotes(str);
+  });
+
   Handlebars.registerHelper('ifEquals', function (arg1, arg2, options) {
     return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
   });

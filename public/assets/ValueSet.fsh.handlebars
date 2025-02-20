@@ -1,8 +1,8 @@
 {{#with this as |optionSet|}}
 ValueSet: {{toPascalCase optionSet.name}}VS
-Title: "{{{optionSet.name}}} value set"
+Title: "{{{escapeQuotes optionSet.name}}} value set"
 {{#if optionSet.description}}
-Description: "{{{optionSet.description}}}"
+Description: "{{{escapeQuotes optionSet.description}}}"
 {{/if}}
 * codes from system {{toPascalCase optionSet.name}}CS
 {{/with}}
