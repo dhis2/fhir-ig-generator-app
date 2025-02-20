@@ -2,9 +2,9 @@
 CodeSystem: {{toPascalCase optionSet.name}}CS
 Title: "{{{escapeQuotes optionSet.name}}}"
 {{#if optionSet.description}}
-Description: "{{escapeQuotes optionSet.description}}"
+Description: "{{{escapeQuotes optionSet.description}}}"
 {{/if}}
 {{#each optionSet.options as |option|}}
-* #"{{option.code}}" "{{escapeQuotes option.name}}"
+* #"{{option.code}}" "{{{escapeQuotes option.name}}}"
 {{/each}}
 {{/with}}
