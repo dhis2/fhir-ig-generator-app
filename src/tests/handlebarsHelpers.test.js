@@ -1,4 +1,4 @@
-import { toCamelCase, toFhirCardinality, toFhirDataElementName, toFhirDataType, toKebabCase, toPascalCase } from "../utils/handlebarsHelpers";
+import { escapeQuotes, toCamelCase, toFhirCardinality, toFhirDataElementName, toFhirDataType, toKebabCase, toPascalCase } from "../utils/handlebarsHelpers";
 
 test('converts a string to pascal case', () => {
     expect(toPascalCase("THIs Is my test   name__ ")).toBe("ThisIsMyTestName");
@@ -29,6 +29,13 @@ test('converts DHIS2 value types to FHIR data types', () => {
     expect(toFhirDataType("TRUE_ONLY")).toBe("boolean");
     expect(toFhirDataType("INTEGER_ZERO_OR_POSITIVE")).toBe("unsignedInt");
     expect(toFhirDataType("INTEGER_NEGATIVE")).toBe("integer");
+})
+
+test('Escapes Quotes in input string', () => {
+    expect(escapeQuotes('Test "Hello"')).toBe('Test \"Hello\"');
+    expect(escapeQuotes('"Hello" and "goodbye"')).toBe('\"Hello\" and \"goodbye\"');
+    expect(escapeQuotes('no quotes.')).toBe('no quotes.');
+    expect(escapeQuotes(true)).toBe(true);
 })
 
 test('converts DHIS2 objects (data element or TEI attribute) to FHIR data element name', () => {

@@ -185,6 +185,11 @@ export const extractOptionSetNames = (programStage) => {
   return Array.from(optionSets);
 };
 
+export const escapeQuotes = (str) => {
+  if (typeof str !== "string") return str;
+  return str.replace(/"/g, '\"');
+};
+
 export const registerHelpers = () => {
 
   Handlebars.registerHelper('ifEquals', function (arg1, arg2, options) {
