@@ -1,7 +1,6 @@
 Instance: OutcomeQuestionnaire
 InstanceOf: Questionnaire
 Title: "Outcome Questionnaire"
-Description: ""
 Usage: #definition
 * status = #draft
 * experimental = false

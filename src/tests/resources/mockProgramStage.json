@@ -5,7 +5,7 @@
         {
             "dataElement": {
                 "name": "TB lab CD4",
-                "formName": "CD4",
+                "shortName": "CD4",
                 "valueType": "TRUE_ONLY",
                 "optionSetValue": false
             },
@@ -14,7 +14,7 @@
         {
             "dataElement": {
                 "name": "TB lab Creatinine",
-                "formName": "Creatinine",
+                "shortName": "Creatinine",
                 "valueType": "TRUE_ONLY",
                 "optionSetValue": false
             },
@@ -23,7 +23,7 @@
         {
             "dataElement": {
                 "name": "Tb lab Glucose",
-                "formName": "Glucose",
+                "shortName": "Glucose",
                 "valueType": "TRUE_ONLY",
                 "optionSetValue": false
             },
@@ -32,7 +32,7 @@
         {
             "dataElement": {
                 "name": "TB lab Hemoglobin",
-                "formName": "Hemoglobin",
+                "shortName": "Hemoglobin",
                 "valueType": "TRUE_ONLY",
                 "optionSetValue": false
             },

@@ -1,48 +1,52 @@
-Instance: {{toPascalCase name}}Questionnaire
+{{#with this as |programStage|}}
+Instance: {{toPascalCase programStage.name}}Questionnaire
 InstanceOf: Questionnaire
-Title: "{{name}} Questionnaire"
-Description: "{{description}}"
+Title: "{{{escapeQuotes programStage.name}}} Questionnaire"
+{{#if programStage.description}}
+Description: "{{{escapeQuotes programStage.description}}}"
+{{/if}}
 Usage: #definition
 * status = #draft
 * experimental = false
 
-{{#each (extractOptionSetNames this)}}
-* contained[+] = {{toPascalCase this}}VS
+{{#each (extractOptionSetNames programStage) as |programStageOptionSetName|}}
+* contained[+] = {{toPascalCase programStageOptionSetName}}VS
 {{/each}}
 
 {{#if programStageSections.length}}
-{{#each programStageSections}}
-* item[+].linkId = "{{toCamelCase name }}"
-* item[=].text = "{{name}}"
+{{#each programStageSections as |section|}}
+* item[+].linkId = "{{toCamelCase section.name}}"
+* item[=].text = "{{{escapeQuotes section.name}}}"
 * item[=].type = #group
 * item[=]
-{{#each dataElements}}
-  {{#each ../../programStageDataElements}}
-    {{#ifEquals dataElement.id ../this.id}}
-  * item[+].linkId = "{{toCamelCase dataElement.name}}"
-  * item[=].text = "{{#if dataElement.formName}}{{{dataElement.formName}}}{{else}}{{{dataElement.name}}}{{/if}}"
-  * item[=].type = #{{#if dataElement.optionSet}}choice{{else}}{{toQuestionnaireItemType dataElement.valueType}}{{/if}}
+  {{#each section.dataElements as |sectionDataElement|}}
+    {{#each ../../programStageDataElements as |programStageDataElement|}}
+      {{#ifEquals programStageDataElement.dataElement.id sectionDataElement.id}}
+  * item[+].linkId = "{{toCamelCase programStageDataElement.dataElement.name}}"
+  * item[=].text = "{{#if programStageDataElement.dataElement.formName}}{{{escapeQuotes programStageDataElement.dataElement.formName}}}{{else}}{{{escapeQuotes programStageDataElement.dataElement.name}}}{{/if}}"
+  * item[=].type = #{{#if programStageDataElement.dataElement.optionSet}}choice{{else}}{{toQuestionnaireItemType programStageDataElement.dataElement.valueType}}{{/if}}
   * item[=].repeats = false
-  * item[=].required = {{compulsory}}
-  {{#if dataElement.optionSet}}
-  * item[=].answerValueSet = "#{{toPascalCase dataElement.optionSet.name}}VS"
-  {{/if}}
+  * item[=].required = {{programStageDataElement.compulsory}}
+      {{#if programStageDataElement.dataElement.optionSet}}
+  * item[=].answerValueSet = "#{{toPascalCase programStageDataElement.dataElement.optionSet.name}}VS"
+      {{/if}}
 
-{{/ifEquals}}
+      {{/ifEquals}}
+    {{/each}}
   {{/each}}
-{{/each}}
 {{/each}}
 
 {{else}}
-{{#each programStageDataElements}}
-* item[+].linkId = "{{{toCamelCase dataElement.name}}}"
-* item[=].text = "{{#if dataElement.formName}}{{{dataElement.formName}}}{{else}}{{{dataElement.name}}}{{/if}}"
-* item[=].type = #{{#if dataElement.optionSet}}choice{{else}}{{toQuestionnaireItemType dataElement.valueType}}{{/if}}
+{{#each programStageDataElements as |programStageDataElement|}}
+* item[+].linkId = "{{{toCamelCase programStageDataElement.dataElement.name}}}"
+* item[=].text = "{{#if programStageDataElement.dataElement.formName}}{{{escapeQuotes programStageDataElement.dataElement.formName}}}{{else}}{{{escapeQuotes programStageDataElement.dataElement.name}}}{{/if}}"
+* item[=].type = #{{#if programStageDataElement.dataElement.optionSet}}choice{{else}}{{toQuestionnaireItemType programStageDataElement.dataElement.valueType}}{{/if}}
 * item[=].repeats = false
-* item[=].required = {{compulsory}}
-{{#if dataElement.optionSet}}
-* item[=].answerValueSet = "#{{toPascalCase dataElement.optionSet.name}}VS"
+* item[=].required = {{programStageDataElement.compulsory}}
+{{#if programStageDataElement.dataElement.optionSet}}
+* item[=].answerValueSet = "#{{toPascalCase programStageDataElement.dataElement.optionSet.name}}VS"
 {{/if}}
 
 {{/each}}
 {{/if}}
+{{/with}}

@@ -1,4 +1,4 @@
-import { toCamelCase, toFhirCardinality, toFhirDataElementName, toFhirDataType, toKebabCase, toPascalCase } from "../utils/handlebarsHelpers";
+import { escapeQuotes, toCamelCase, toFhirCardinality, toFhirDataElementName, toFhirDataType, toKebabCase, toPascalCase } from "../utils/handlebarsHelpers";
 
 test('converts a string to pascal case', () => {
     expect(toPascalCase("THIs Is my test   name__ ")).toBe("ThisIsMyTestName");
@@ -31,6 +31,13 @@ test('converts DHIS2 value types to FHIR data types', () => {
     expect(toFhirDataType("INTEGER_NEGATIVE")).toBe("integer");
 })
 
+test('Escapes Quotes in input string', () => {
+    expect(escapeQuotes('Test "Hello"')).toBe('Test \"Hello\"');
+    expect(escapeQuotes('"Hello" and "goodbye"')).toBe('\"Hello\" and \"goodbye\"');
+    expect(escapeQuotes('no quotes.')).toBe('no quotes.');
+    expect(escapeQuotes(true)).toBe(true);
+})
+
 test('converts DHIS2 objects (data element or TEI attribute) to FHIR data element name', () => {
     const validName = {
         shortName: "test",
@@ -47,5 +54,5 @@ test('converts DHIS2 objects (data element or TEI attribute) to FHIR data elemen
 
     expect(toFhirDataElementName(validName)).toBe("test");
     expect(toFhirDataElementName(invalidNameValidShortName)).toBe("shortName");
-    expect(() => toFhirDataElementName(invalidNames)).toThrow("Both formName and shortName are too long to be a valid FHIR data element name.");
+    expect(() => toFhirDataElementName(invalidNames)).toThrow("The chosen name is too long to be a valid FHIR data element name.");
 })
