@@ -8,7 +8,7 @@ const PublishingInstructionsModal = ({ onClose }) => {
     useEffect(() => {
         const fetchMarkdown = async () => {
             try {
-                const response = await fetch("/publishInstructions.md");
+                const response = await fetch(`${process.env.PUBLIC_URL}/assets/publishInstructions.md`);
                 if (!response.ok) {
                     throw new Error("Failed to fetch the IG publish instructions.");
                 }
