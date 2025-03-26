@@ -1,6 +1,6 @@
 import React from "react";
 import IGConfigForm from "../components/IGConfigForm";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 const IGConfigPage = ({ igConfig, setIgConfig }) => {
     const navigate = useNavigate();
