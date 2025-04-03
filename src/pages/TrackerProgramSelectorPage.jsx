@@ -6,8 +6,9 @@ import { useTemplates } from "../hooks/useTemplates";
 import { NoticeBox, CircularLoader, Button } from "@dhis2/ui";
 import classes from "./TrackerProgramSelectorPage.module.css";
 import { useNavigate } from "react-router-dom";
-
-const TrackerProgramSelectorPage = ({ igConfig }) => {
+import { useIgConfig } from "../contexts/IgConfigContext";
+const TrackerProgramSelectorPage = () => {
+    const { igConfig } = useIgConfig();
     const navigate = useNavigate();
     const [selectedProgramIds, setSelectedProgramIds] = useState([]);
     const { programs, error: programsError, loading } = useTrackerPrograms();
