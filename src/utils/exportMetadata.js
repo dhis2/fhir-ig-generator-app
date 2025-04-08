@@ -22,6 +22,8 @@ export const exportMetadata = (trackerPrograms, templates, igConfig) => {
           trackerPrograms.forEach((program) => {
             generateFshFilesForProgram(program, templates, igArchive);
           });
+
+          generateDhis2CodeSystems(trackerPrograms,templates,igArchive);
         })
         .then(function () {
           handleDownload(igArchive);
@@ -120,3 +122,59 @@ const updateIgIniFile = async (igArchive, igId) => {
   const updatedIniFile = igIniFile.replace("fhir.example", igId);
   igArchive.file("ig.ini", updatedIniFile);
 };
+
+const generateDhis2CodeSystems = (trackerPrograms, templates, igArchive) => {
+  const uniqueDataElements = new Map();
+  const uniqueTrackedEntityAttributes = new Map();
+
+  trackerPrograms.forEach(program => {
+    program.programTrackedEntityAttributes?.forEach(attribute => {
+      const teAttribute = attribute.trackedEntityAttribute;
+      if (teAttribute && teAttribute.id && !uniqueTrackedEntityAttributes.has(teAttribute.id)) {
+        uniqueTrackedEntityAttributes.set(teAttribute.id,teAttribute);
+      }
+    });
+
+    program.programStages?.forEach(stage => {
+      stage.programStageDataElements?.forEach(element => {
+        const dataElement = element.dataElement;
+        if (dataElement && dataElement.id && !uniqueDataElements.has(dataElement.id)) {
+          uniqueDataElements.set(dataElement.id, dataElement)
+        }
+      });
+    });
+  });
+
+  const dataElementsData = {
+    elements: Array.from(uniqueDataElements.values()),
+    count: uniqueDataElements.size
+  };
+
+  const attributesData = {
+    elements: Array.from(uniqueTrackedEntityAttributes.values()),
+    count: uniqueTrackedEntityAttributes.size
+  };
+
+  console.log("Attribute values: "+uniqueDataElements);
+
+  const dataElementsCodeSystem = generateFsh(
+    dataElementsData,
+    templates.dataElementsCodeSystemTemplate
+  )
+
+  const attributesCodeSystem = generateFsh(
+    attributesData,
+    templates.attributesCodeSystemTemplate
+  )
+
+  igArchive.file(
+    "input/fsh/codesystems/Dhis2DataElementsCS.fsh", 
+    dataElementsCodeSystem
+  );
+  
+  igArchive.file(
+    "input/fsh/codesystems/Dhis2TrackedEntityAttributesCS.fsh", 
+    attributesCodeSystem
+  );
+
+}
