@@ -1,8 +1,10 @@
 import React from "react";
 import IGConfigForm from "../components/IGConfigForm";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
+import { useIgConfig } from "../contexts/IgConfigContext";
 
-const IGConfigPage = ({ igConfig, setIgConfig }) => {
+const IGConfigPage = () => {
+    const { igConfig, setIgConfig } = useIgConfig();
     const navigate = useNavigate();
 
     const handleFormSubmit = (values) => {

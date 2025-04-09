@@ -7,9 +7,10 @@ import { NoticeBox, CircularLoader, Button } from "@dhis2/ui";
 import { useAlert } from "@dhis2/app-runtime";
 import PublishingInstructionsModal from "../components/PublishingInstructionsModal";
 import classes from "./TrackerProgramSelectorPage.module.css";
-import { useNavigate } from "react-router";
-
-const TrackerProgramSelectorPage = ({ igConfig }) => {
+import { useNavigate } from "react-router-dom";
+import { useIgConfig } from "../contexts/IgConfigContext";
+const TrackerProgramSelectorPage = () => {
+    const { igConfig } = useIgConfig();
     const navigate = useNavigate();
     const [selectedProgramIds, setSelectedProgramIds] = useState([]);
     const { programs, error: programsError, loading } = useTrackerPrograms();

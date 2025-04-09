@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/dhis2/fhir-ig-generator-app/compare/v1.2.0...v1.2.1) (2025-04-08)
+
+
+### Bug Fixes
+
+* ensure correct igconfig update ([7878608](https://github.com/dhis2/fhir-ig-generator-app/commit/7878608489458e6353d8ff34150dc9abbf5a5d85))
+
 # [1.2.0](https://github.com/dhis2/fhir-ig-generator-app/compare/v1.1.1...v1.2.0) (2025-02-24)
 
 
