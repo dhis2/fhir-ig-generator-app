@@ -12,11 +12,11 @@ const createAppRouter = ({ igConfig, setIgConfig }) => {
         },
         {
             path: "/ig-config",
-            element: <IGConfigPage igConfig={igConfig} setIgConfig={setIgConfig} />,
+            element: <IGConfigPage/>,
         },
         {
             path: "/program-selector",
-            element: <TrackerProgramSelectorPage igConfig={igConfig} />,
+            element: <TrackerProgramSelectorPage/>,
         },
     ]);
 };
