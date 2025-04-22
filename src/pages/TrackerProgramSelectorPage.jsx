@@ -4,6 +4,8 @@ import { exportMetadata } from "../utils/exportMetadata";
 import { useTrackerPrograms } from "../hooks/useTrackerPrograms";
 import { useTemplates } from "../hooks/useTemplates";
 import { NoticeBox, CircularLoader, Button } from "@dhis2/ui";
+import { useAlert } from "@dhis2/app-runtime";
+import PublishingInstructionsModal from "../components/PublishingInstructionsModal";
 import classes from "./TrackerProgramSelectorPage.module.css";
 import { useNavigate } from "react-router-dom";
 import { useIgConfig } from "../contexts/IgConfigContext";
@@ -13,6 +15,16 @@ const TrackerProgramSelectorPage = () => {
     const [selectedProgramIds, setSelectedProgramIds] = useState([]);
     const { programs, error: programsError, loading } = useTrackerPrograms();
     const { templates, error: templatesError } = useTemplates();
+    const [showModal, setShowModal] = useState(false);
+
+    const successAlert = useAlert(
+        "Successfully downloaded the Implementation Guide (IG)!",
+        { success: true }
+    );
+    const errorAlert = useAlert(
+        "There was an issue starting the download. Please try again.",
+        { critical: true }
+    );
 
     if (programsError || templatesError) {
         return (
@@ -26,15 +38,23 @@ const TrackerProgramSelectorPage = () => {
         return (
             <div className={classes.centerWrapper}>
                 <CircularLoader />
-            </div>);
+            </div>
+        );
     }
 
     const selectedPrograms = programs.filter((program) =>
         selectedProgramIds.includes(program.id)
     );
 
-    const handleDownloadClick = () => {
-        exportMetadata(selectedPrograms, templates, igConfig);
+    const handleDownloadClick = async () => {
+        try {
+            exportMetadata(selectedPrograms, templates, igConfig);
+            successAlert.show();
+            setShowModal(true);
+        } catch (error) {
+            console.error("Error during download: ", error);
+            errorAlert.show();
+        }
     };
 
     return (
@@ -59,6 +79,9 @@ const TrackerProgramSelectorPage = () => {
                     </Button>
                 </div>
             </div>
+            {showModal && (
+                <PublishingInstructionsModal onClose={() => setShowModal(false)} />
+            )}
         </div>
     );
 };
