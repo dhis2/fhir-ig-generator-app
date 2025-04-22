@@ -70,7 +70,7 @@ const PublishingInstructionsModal = ({ onClose }) => {
     );
 };
 
-PublishingInstructionsModal.PropTypes = {
+PublishingInstructionsModal.propTypes = {
     onClose: PropTypes.func.isRequired
 }
 
