@@ -1,0 +1,7 @@
+CodeSystem: Dhis2TrackedEntityAttributesCS
+Id: dhis2-tracked-entity-attributes-cs
+Title: "Dhis2 Tracked Entity Attribute Code System"
+Description: "Code system for {{count}} unique DHIS2 tracked entity attributes"
+{{#each elements as |element|}}
+* #{{element.id}} "{{element.name}}" "{{#if element.description}}{{{escapeQuotes element.description}}}{{else}}{{{escapeQuotes element.name}}}{{/if}}"
+{{/each}}

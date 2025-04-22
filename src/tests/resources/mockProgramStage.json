@@ -4,6 +4,7 @@
     "programStageDataElements": [
         {
             "dataElement": {
+                "id": "cd4001",
                 "name": "TB lab CD4",
                 "shortName": "CD4",
                 "valueType": "TRUE_ONLY",
@@ -13,6 +14,7 @@
         },
         {
             "dataElement": {
+                "id": "creat002",
                 "name": "TB lab Creatinine",
                 "shortName": "Creatinine",
                 "valueType": "TRUE_ONLY",
@@ -22,6 +24,7 @@
         },
         {
             "dataElement": {
+                "id": "gluc003",
                 "name": "Tb lab Glucose",
                 "shortName": "Glucose",
                 "valueType": "TRUE_ONLY",
@@ -31,6 +34,7 @@
         },
         {
             "dataElement": {
+                "id": "hemo004",
                 "name": "TB lab Hemoglobin",
                 "shortName": "Hemoglobin",
                 "valueType": "TRUE_ONLY",

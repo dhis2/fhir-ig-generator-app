@@ -1,0 +1,20 @@
+{
+    "elements": [
+      {
+        "id": "abc123",
+        "name": "TB Lab CD4",
+        "description": "TB Laboratory CD4 Count"
+      },
+      {
+        "id": "def456",
+        "name": "HIV Status",
+        "description": null
+      },
+      {
+        "id": "ghi789",
+        "name": "Weight in kg",
+        "description": "Patient weight in kilograms"
+      }
+    ],
+    "count": 3
+  }
