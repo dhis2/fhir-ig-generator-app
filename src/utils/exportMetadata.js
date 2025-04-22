@@ -155,8 +155,6 @@ const generateDhis2CodeSystems = (trackerPrograms, templates, igArchive) => {
     count: uniqueTrackedEntityAttributes.size
   };
 
-  console.log("Attribute values: "+uniqueDataElements);
-
   const dataElementsCodeSystem = generateFsh(
     dataElementsData,
     templates.dataElementsCodeSystemTemplate
