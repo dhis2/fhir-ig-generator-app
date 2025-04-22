@@ -130,7 +130,7 @@ const generateDhis2CodeSystems = (trackerPrograms, templates, igArchive) => {
   trackerPrograms.forEach(program => {
     program.programTrackedEntityAttributes?.forEach(attribute => {
       const teAttribute = attribute.trackedEntityAttribute;
-      if (teAttribute && teAttribute.id && !uniqueTrackedEntityAttributes.has(teAttribute.id)) {
+      if (teAttribute?.id && !uniqueTrackedEntityAttributes.has(teAttribute.id)) {
         uniqueTrackedEntityAttributes.set(teAttribute.id,teAttribute);
       }
     });
@@ -138,7 +138,7 @@ const generateDhis2CodeSystems = (trackerPrograms, templates, igArchive) => {
     program.programStages?.forEach(stage => {
       stage.programStageDataElements?.forEach(element => {
         const dataElement = element.dataElement;
-        if (dataElement && dataElement.id && !uniqueDataElements.has(dataElement.id)) {
+        if (dataElement?.id && !uniqueDataElements.has(dataElement.id)) {
           uniqueDataElements.set(dataElement.id, dataElement)
         }
       });

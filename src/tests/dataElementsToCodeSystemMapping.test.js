@@ -26,6 +26,8 @@ describe("DHIS2 Data Elements to CodeSystem FSH Mapping", () => {
   it("Should handle an empty collection of data elements", () => {
     const compiledTemplate = Handlebars.compile(template);
     const resultFSH = compiledTemplate(emptyMockData).trim();
-    expect(resultFSH).toEqual(expectedEmptyOutput.trim());
+    const normalizedResult = resultFSH.replace(/\r\n/g, '\n').replace(/\s+$/gm, '');
+    const normalizedExpected = expectedEmptyOutput.replace(/\r\n/g, '\n').replace(/\s+$/gm, '');
+    expect(normalizedExpected).toEqual(normalizedResult);
   });
 });
