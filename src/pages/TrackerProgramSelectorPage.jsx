@@ -48,7 +48,7 @@ const TrackerProgramSelectorPage = () => {
 
     const handleDownloadClick = async () => {
         try {
-            await exportMetadata(selectedPrograms, templates, igConfig);
+            exportMetadata(selectedPrograms, templates, igConfig);
             successAlert.show();
             setShowModal(true);
         } catch (error) {

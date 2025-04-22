@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { Modal, ModalContent, ModalActions, Button, CircularLoader, NoticeBox } from "@dhis2/ui";
+import PropTypes from "prop-types";
 import styles from "./PublishingInstructionsModal.module.css";
 
 const PublishingInstructionsModal = ({ onClose }) => {
@@ -29,23 +30,35 @@ const PublishingInstructionsModal = ({ onClose }) => {
         fetchMarkdown();
     }, []);
 
+    const renderContent = () => {
+        if (isLoading) {
+            return (
+                <div className={styles.centerWrapper}>
+                    <CircularLoader />
+                </div>
+            );
+        }
+
+        if (error) {
+            return (
+                <NoticeBox error title="Error">
+                    {error}
+                </NoticeBox>
+            );
+        }
+
+        return (
+            <div className={styles.markdownContainer}>
+                <ReactMarkdown>{markdownContent}</ReactMarkdown>
+            </div>
+        );
+    };
+
     return (
         <Modal onClose={onClose} large>
             <ModalContent>
-            <div className={styles.modalContent}>
-                    {isLoading ? (
-                        <div className={styles.centerWrapper}>
-                            <CircularLoader />
-                        </div>
-                    ) : error ? (
-                        <NoticeBox error title="Error">
-                            {error}
-                        </NoticeBox>
-                    ) : (
-                        <div className={styles.markdownContainer}>
-                            <ReactMarkdown>{markdownContent}</ReactMarkdown>
-                        </div>
-                    )}
+                <div className={styles.modalContent}>
+                    {renderContent()}
                 </div>
             </ModalContent>
             <ModalActions>
@@ -56,5 +69,9 @@ const PublishingInstructionsModal = ({ onClose }) => {
         </Modal>
     );
 };
+
+PublishingInstructionsModal.PropTypes = {
+    onClose: PropTypes.func.isRequired
+}
 
 export default PublishingInstructionsModal;
