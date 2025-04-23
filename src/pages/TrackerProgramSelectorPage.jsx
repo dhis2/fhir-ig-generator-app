@@ -6,20 +6,21 @@ import { useTemplates } from "../hooks/useTemplates";
 import { NoticeBox, CircularLoader, Button, ButtonStrip } from "@dhis2/ui";
 import { useAlert } from "@dhis2/app-runtime";
 import PublishingInstructionsModal from "../components/PublishingInstructionsModal";
+import ValidationResultsModal from "../components/ValidationResultsModal";
 import classes from "./TrackerProgramSelectorPage.module.css";
 import { useNavigate } from "react-router-dom";
 import { useIgConfig } from "../contexts/IgConfigContext";
 import { validateAll } from "../utils/validationService";
-import ValidationResults from "../components/ValidationResults";
+
 const TrackerProgramSelectorPage = () => {
     const { igConfig } = useIgConfig();
     const navigate = useNavigate();
     const [selectedProgramIds, setSelectedProgramIds] = useState([]);
     const { programs, error: programsError, loading } = useTrackerPrograms();
     const { templates, error: templatesError } = useTemplates();
-    const [showModal, setShowModal] = useState(false);
+    const [showPublishModal, setShowPublishModal] = useState(false);
     const [validationResults, setValidationResults] = useState(null);
-
+    const [showValidationModal, setShowValidationModal] = useState(false);
     const successAlert = useAlert(
         "Successfully downloaded the Implementation Guide (IG)!",
         { success: true }
@@ -53,7 +54,7 @@ const TrackerProgramSelectorPage = () => {
         try {
             exportMetadata(selectedPrograms, templates, igConfig);
             successAlert.show();
-            setShowModal(true);
+            setShowPublishModal(true);
         } catch (error) {
             console.error("Error during download: ", error);
             errorAlert.show();
@@ -63,11 +64,16 @@ const TrackerProgramSelectorPage = () => {
     const handleValidateClick = () => {
         const results = validateAll(selectedPrograms);
         setValidationResults(results);
+        setShowValidationModal(true);
     }
 
     const handleSelectionChange = (newSelection) => {
         setSelectedProgramIds(newSelection);
         setValidationResults(null);
+    }
+
+    const closeValidationModal = () => {
+        setShowValidationModal(false);
     }
 
     return (
@@ -77,9 +83,8 @@ const TrackerProgramSelectorPage = () => {
                 <TrackerProgramSelector
                     programs={programs}
                     selectedProgramIds={selectedProgramIds}
-                    setSelectedProgramIds={setSelectedProgramIds}
+                    setSelectedProgramIds={handleSelectionChange}
                 />
-                <ValidationResults validationData={validationResults} />
 
                 <div className={classes.buttonRow}>
                     <Button onClick={() => navigate("/")} secondary>
@@ -102,8 +107,16 @@ const TrackerProgramSelectorPage = () => {
                     </ButtonStrip>
                 </div>
             </div>
-            {showModal && (
-                <PublishingInstructionsModal onClose={() => setShowModal(false)} />
+            
+            {showValidationModal && (
+                <ValidationResultsModal 
+                    validationData={validationResults}
+                    onClose={closeValidationModal}
+                />
+            )}
+            
+            {showPublishModal && (
+                <PublishingInstructionsModal onClose={() => setShowPublishModal(false)} />
             )}
         </div>
     );
