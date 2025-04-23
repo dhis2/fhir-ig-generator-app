@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/dhis2/fhir-ig-generator-app/compare/v1.2.1...v1.3.0) (2025-04-22)
+
+
+### Features
+
+* add IG publishing instructions ([#24](https://github.com/dhis2/fhir-ig-generator-app/issues/24)) ([a779de2](https://github.com/dhis2/fhir-ig-generator-app/commit/a779de223c13e9ae78a956bc8d8000fb0d1c109d))
+
 ## [1.2.1](https://github.com/dhis2/fhir-ig-generator-app/compare/v1.2.0...v1.2.1) (2025-04-08)
 
 
