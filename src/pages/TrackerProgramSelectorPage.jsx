@@ -3,16 +3,20 @@ import TrackerProgramSelector from "../components/TrackerProgramSelector";
 import { exportMetadata } from "../utils/exportMetadata";
 import { useTrackerPrograms } from "../hooks/useTrackerPrograms";
 import { useTemplates } from "../hooks/useTemplates";
-import { NoticeBox, CircularLoader, Button } from "@dhis2/ui";
+import { NoticeBox, CircularLoader, Button, ButtonStrip } from "@dhis2/ui";
 import classes from "./TrackerProgramSelectorPage.module.css";
 import { useNavigate } from "react-router-dom";
 import { useIgConfig } from "../contexts/IgConfigContext";
+import { validateAll } from "../utils/validationService";
+import ValidationResults from "../components/ValidationResults";
 const TrackerProgramSelectorPage = () => {
     const { igConfig } = useIgConfig();
     const navigate = useNavigate();
     const [selectedProgramIds, setSelectedProgramIds] = useState([]);
     const { programs, error: programsError, loading } = useTrackerPrograms();
     const { templates, error: templatesError } = useTemplates();
+    const [showModal, setShowModal] = useState(false);
+    const [validationResults, setValidationResults] = useState(null);
 
     if (programsError || templatesError) {
         return (
@@ -37,6 +41,16 @@ const TrackerProgramSelectorPage = () => {
         exportMetadata(selectedPrograms, templates, igConfig);
     };
 
+    const handleValidateClick = () => {
+        const results = validateAll(selectedPrograms);
+        setValidationResults(results);
+    }
+
+    const handleSelectionChange = (newSelection) => {
+        setSelectedProgramIds(newSelection);
+        setValidationResults(null);
+    }
+
     return (
         <div className={classes.centerWrapper}>
             <div className={classes.container}>
@@ -46,19 +60,32 @@ const TrackerProgramSelectorPage = () => {
                     selectedProgramIds={selectedProgramIds}
                     setSelectedProgramIds={setSelectedProgramIds}
                 />
+                <ValidationResults validationData={validationResults} />
+
                 <div className={classes.buttonRow}>
                     <Button onClick={() => navigate("/")} secondary>
                         Previous
                     </Button>
-                    <Button
-                        primary
-                        onClick={handleDownloadClick}
-                        disabled={selectedPrograms.length === 0 || !templates}
-                    >
-                        Download FHIR IG
-                    </Button>
+                    <ButtonStrip end>
+                        <Button
+                            onClick={handleValidateClick}
+                            disabled={selectedPrograms.length === 0 || !templates}
+                        >
+                            Validate
+                        </Button>
+                        <Button
+                            primary
+                            onClick={handleDownloadClick}
+                            disabled={selectedPrograms.length === 0 || !templates}
+                        >
+                            Download FHIR IG
+                        </Button>
+                    </ButtonStrip>
                 </div>
             </div>
+            {showModal && (
+                <PublishingInstructionsModal onClose={() => setShowModal(false)} />
+            )}
         </div>
     );
 };

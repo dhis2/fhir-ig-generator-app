@@ -1,4 +1,5 @@
 import Handlebars from "handlebars";
+import { validateCode } from "./codeValidation";
 
 export const toPascalCase = (str) => {
   return str
@@ -244,5 +245,9 @@ export const registerHelpers = () => {
 
   Handlebars.registerHelper("extractOptionSetNames", function (programStage, options) {
     return extractOptionSetNames(programStage);
+  });
+
+  Handlebars.registerHelper('validateFhirCode', function(code) {
+    return validateFhirCode(code);
   });
 };
