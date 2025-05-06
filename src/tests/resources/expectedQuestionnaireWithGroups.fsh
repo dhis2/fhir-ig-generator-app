@@ -8,7 +8,7 @@ Usage: #definition
 * contained[+] = TBCSTreatmentOutcomeVS
 * contained[+] = TBCSDenotificationReasonsVS
 
-* item[+].linkId = "outcome"
+* item[+].linkId = "outcomeGroup"
 * item[=].text = "Outcome"
 * item[=].type = #group
 * item[=]
@@ -44,7 +44,7 @@ Usage: #definition
   * item[=].repeats = false
   * item[=].required = false
 
-* item[+].linkId = "outcomeStatus"
+* item[+].linkId = "outcomeStatusGroup"
 * item[=].text = "Outcome status"
 * item[=].type = #group
 * item[=]

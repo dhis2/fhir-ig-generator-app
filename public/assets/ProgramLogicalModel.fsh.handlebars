@@ -5,8 +5,6 @@ Parent: Base
 {{#if trackerProgram.description}}
 Description: "{{{escapeQuotes trackerProgram.description}}}"
 {{/if}}
-* enrollmentDate 1..1 date "{{{escapeQuotes trackerProgram.enrollmentDateLabel}}}"
-* incidentDate 0..1 date "{{{escapeQuotes trackerProgram.incidentDateLabel}}}"
 {{#trackerProgram.programTrackedEntityAttributes as |programTEA|}}
 * {{toFhirDataElementName programTEA.trackedEntityAttribute}} {{toFhirCardinality programTEA.mandatory}}..1 {{toFhirDataType programTEA.trackedEntityAttribute.valueType programTEA.trackedEntityAttribute.optionSet}} "{{{escapeQuotes (toFhirElementDescription programTEA.trackedEntityAttribute)}}}"
 {{#if programTEA.trackedEntityAttribute.optionSet}}

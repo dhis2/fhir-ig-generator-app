@@ -1,8 +1,6 @@
 Logical: TBProgram
 Title: "TB program"
 Parent: Base
-* enrollmentDate 1..1 date "Start of treatment date"
-* incidentDate 0..1 date "Start of treatment date"
 * firstName 1..1 string "This is the person's first name"
 * lastName 1..1 string "Last name"
 * gender 1..1 code "Gender"

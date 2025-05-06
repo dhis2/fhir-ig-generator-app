@@ -4,6 +4,10 @@ Title: "{{{escapeQuotes optionSet.name}}}"
 {{#if optionSet.description}}
 Description: "{{{escapeQuotes optionSet.description}}}"
 {{/if}}
+* ^meta.profile[+] = "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-shareablecodesystem"
+* ^meta.profile[+] = "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-publishablecodesystem"
+* ^experimental = false
+* ^caseSensitive = true
 {{#each optionSet.options as |option|}}
 * #"{{option.code}}" "{{{escapeQuotes option.name}}}"
 {{/each}}
