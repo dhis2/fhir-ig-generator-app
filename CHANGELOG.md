@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/dhis2/fhir-ig-generator-app/compare/v1.3.0...v1.3.1) (2025-05-12)
+
+
+### Bug Fixes
+
+* transformation improvements ([#29](https://github.com/dhis2/fhir-ig-generator-app/issues/29)) ([408120b](https://github.com/dhis2/fhir-ig-generator-app/commit/408120b7e767d7d0b9caa4c1c565b786c6152f65))
+
 # [1.3.0](https://github.com/dhis2/fhir-ig-generator-app/compare/v1.2.1...v1.3.0) (2025-04-22)
 
 
