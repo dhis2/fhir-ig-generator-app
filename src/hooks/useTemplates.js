@@ -6,6 +6,8 @@ export const templateFileNames = [
     { key: 'codeSystemTemplate', fileName: 'CodeSystem.fsh.handlebars' },
     { key: 'valueSetTemplate', fileName: 'ValueSet.fsh.handlebars' },
     { key: 'questionnaireTemplate', fileName: 'Questionnaire.fsh.handlebars'},
+    {key: 'dataElementsCodeSystemTemplate', fileName: 'DataElementsCodeSystem.fsh.handlebars'},
+    {key: 'attributesCodeSystemTemplate', fileName: 'AttributesCodeSystem.fsh.handlebars'}
 ]
 
 export const useTemplates = () => {
