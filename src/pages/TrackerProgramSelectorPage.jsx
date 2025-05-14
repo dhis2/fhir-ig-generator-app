@@ -3,20 +3,24 @@ import TrackerProgramSelector from "../components/TrackerProgramSelector";
 import { exportMetadata } from "../utils/exportMetadata";
 import { useTrackerPrograms } from "../hooks/useTrackerPrograms";
 import { useTemplates } from "../hooks/useTemplates";
-import { NoticeBox, CircularLoader, Button } from "@dhis2/ui";
+import { NoticeBox, CircularLoader, Button, ButtonStrip } from "@dhis2/ui";
 import { useAlert } from "@dhis2/app-runtime";
 import PublishingInstructionsModal from "../components/PublishingInstructionsModal";
+import ValidationResultsModal from "../components/ValidationResultsModal";
 import classes from "./TrackerProgramSelectorPage.module.css";
 import { useNavigate } from "react-router-dom";
 import { useIgConfig } from "../contexts/IgConfigContext";
+import { validateAll } from "../utils/validationService";
+
 const TrackerProgramSelectorPage = () => {
     const { igConfig } = useIgConfig();
     const navigate = useNavigate();
     const [selectedProgramIds, setSelectedProgramIds] = useState([]);
     const { programs, error: programsError, loading } = useTrackerPrograms();
     const { templates, error: templatesError } = useTemplates();
-    const [showModal, setShowModal] = useState(false);
-
+    const [showPublishModal, setShowPublishModal] = useState(false);
+    const [validationResults, setValidationResults] = useState(null);
+    const [showValidationModal, setShowValidationModal] = useState(false);
     const successAlert = useAlert(
         "Successfully downloaded the Implementation Guide (IG)!",
         { success: true }
@@ -50,12 +54,27 @@ const TrackerProgramSelectorPage = () => {
         try {
             exportMetadata(selectedPrograms, templates, igConfig);
             successAlert.show();
-            setShowModal(true);
+            setShowPublishModal(true);
         } catch (error) {
             console.error("Error during download: ", error);
             errorAlert.show();
         }
     };
+
+    const handleValidateClick = () => {
+        const results = validateAll(selectedPrograms);
+        setValidationResults(results);
+        setShowValidationModal(true);
+    }
+
+    const handleSelectionChange = (newSelection) => {
+        setSelectedProgramIds(newSelection);
+        setValidationResults(null);
+    }
+
+    const closeValidationModal = () => {
+        setShowValidationModal(false);
+    }
 
     return (
         <div className={classes.centerWrapper}>
@@ -64,23 +83,40 @@ const TrackerProgramSelectorPage = () => {
                 <TrackerProgramSelector
                     programs={programs}
                     selectedProgramIds={selectedProgramIds}
-                    setSelectedProgramIds={setSelectedProgramIds}
+                    setSelectedProgramIds={handleSelectionChange}
                 />
+
                 <div className={classes.buttonRow}>
                     <Button onClick={() => navigate("/")} secondary>
                         Previous
                     </Button>
-                    <Button
-                        primary
-                        onClick={handleDownloadClick}
-                        disabled={selectedPrograms.length === 0 || !templates}
-                    >
-                        Download FHIR IG
-                    </Button>
+                    <ButtonStrip end>
+                        <Button
+                            onClick={handleValidateClick}
+                            disabled={selectedPrograms.length === 0 || !templates}
+                        >
+                            Validate
+                        </Button>
+                        <Button
+                            primary
+                            onClick={handleDownloadClick}
+                            disabled={selectedPrograms.length === 0 || !templates}
+                        >
+                            Download FHIR IG
+                        </Button>
+                    </ButtonStrip>
                 </div>
             </div>
-            {showModal && (
-                <PublishingInstructionsModal onClose={() => setShowModal(false)} />
+            
+            {showValidationModal && (
+                <ValidationResultsModal 
+                    validationData={validationResults}
+                    onClose={closeValidationModal}
+                />
+            )}
+            
+            {showPublishModal && (
+                <PublishingInstructionsModal onClose={() => setShowPublishModal(false)} />
             )}
         </div>
     );
