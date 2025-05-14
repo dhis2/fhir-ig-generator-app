@@ -3,7 +3,7 @@
 # DHIS2 Implementation Guide Generator App
 ## Introduction
 ### Overview
-The DHIS2 Implementation Guide (IG) Generator App is desgined to help author FHIR IGs based on DHIS2 tracker metadata. The app automatically transform DHIS2 tracker program metadata into standardized FHIR Implementation Guides. The FHIR IG Generator bridges the gap between DHIS2's data model and FHIR's interoperability framework, enabling a documented entry point for further interoperability with FHIR conformant systems.
+The DHIS2 Implementation Guide (IG) Generator App is designed to help author FHIR IGs based on DHIS2 tracker metadata. The app automatically transform DHIS2 tracker program metadata into standardized FHIR implementation guides. The FHIR IG Generator bridges the gap between DHIS2's data model and FHIR's interoperability framework, enabling a documented entry point for further interoperability with FHIR conformant systems.
 
 ### What is an Implementation Guide (IG)?
 An Implementation Guide (IG) is a structured document that provides detailed instructions on how to implement a specific use case using FHIR standards. It includes definitions of FHIR resources, profiles, extensions, and value sets, as well as examples and validation rules. By serving as a comprehensive rulebook for FHIR interoperability, an IG ensures that systems can exchange data consistently and reliably, providing a shared understanding of how information should be structured and communicated. For further information about IG authoring best practices, check out FHIR's [Guidance for FHIR IG Creation](https://build.fhir.org/ig/FHIR/ig-guidance/) and WHO's [SMART Guidelines Starter Kit](https://smart.who.int/ig-starter-kit/).
