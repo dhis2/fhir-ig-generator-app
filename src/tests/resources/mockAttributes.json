@@ -1,0 +1,20 @@
+{
+    "elements": [
+      {
+        "id": "xyz123",
+        "name": "First Name",
+        "description": "Patient's first name"
+      },
+      {
+        "id": "uvw456",
+        "name": "Last Name",
+        "description": "Patient's last name"
+      },
+      {
+        "id": "rst789",
+        "name": "Gender",
+        "description": null
+      }
+    ],
+    "count": 3
+}

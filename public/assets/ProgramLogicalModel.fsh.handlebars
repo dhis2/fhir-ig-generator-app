@@ -10,6 +10,7 @@ Description: "{{{escapeQuotes trackerProgram.description}}}"
 {{#if programTEA.trackedEntityAttribute.optionSet}}
 * {{toFhirDataElementName programTEA.trackedEntityAttribute}} from {{toPascalCase programTEA.trackedEntityAttribute.optionSet.name}}VS (required)
 {{/if}}
+  * ^code[+] = Dhis2TrackedEntityAttributesCS#{{programTEA.trackedEntityAttribute.id}}
 {{/trackerProgram.programTrackedEntityAttributes}}
 {{#programStages as |programStage|}}
 * {{toCamelCase programStage.name}} 0..{{isRepeatable programStage.repeatable}} {{toPascalCase programStage.name}} "{{{escapeQuotes (toFhirElementDescription programStage)}}}"

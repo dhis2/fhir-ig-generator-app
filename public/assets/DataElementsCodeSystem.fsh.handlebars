@@ -1,0 +1,7 @@
+CodeSystem: Dhis2DataElementsCS
+Id: dhis2-data-elements-cs
+Title: "DHIS2 Data Elements"
+Description: "Code system for {{count}} unique DHIS2 data elements from all selected programs"
+{{#each elements as |element|}}
+* #{{element.id}} "{{element.name}}" "{{#if element.description}}{{{escapeQuotes element.description}}}{{else}}{{{escapeQuotes element.name}}}{{/if}}"
+{{/each}}

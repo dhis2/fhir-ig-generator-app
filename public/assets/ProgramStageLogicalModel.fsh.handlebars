@@ -10,5 +10,6 @@ Description: "{{{escapeQuotes programStage.description}}}"
 {{#if programStageDataElement.dataElement.optionSet}}
 * {{toFhirDataElementName programStageDataElement.dataElement}} from {{toPascalCase programStageDataElement.dataElement.optionSet.name}}VS (required)
 {{/if}}
+  * ^code[+] = Dhis2DataElementsCS#{{programStageDataElement.dataElement.id}}
 {{/programStageDataElements}}
 {{/with}}
