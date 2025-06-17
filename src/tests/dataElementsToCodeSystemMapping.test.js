@@ -13,7 +13,7 @@ const expectedOutput = fs.readFileSync(path.join(__dirname, "./resources/expecte
 const expectedEmptyOutput = 
 `CodeSystem: Dhis2DataElementsCS
 Id: dhis2-data-elements-cs
-Title: "DHIS2 Data Elements Code System"
+Title: "DHIS2 Data Elements"
 Description: "Code system for 0 unique DHIS2 data elements from all selected programs"`;
 
 describe("DHIS2 Data Elements to CodeSystem FSH Mapping", () => {

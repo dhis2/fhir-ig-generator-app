@@ -12,7 +12,7 @@ const expectedOutput = fs.readFileSync(path.join(__dirname, "./resources/expecte
 const expectedEmptyOutput = 
 `CodeSystem: Dhis2TrackedEntityAttributesCS
 Id: dhis2-tracked-entity-attributes-cs
-Title: "Dhis2 Tracked Entity Attribute Code System"
+Title: "DHIS2 Tracked Entity Attributes"
 Description: "Code system for 0 unique DHIS2 tracked entity attributes"`;
 
 describe("DHIS2 Tracked Entity Attributes to CodeSystem FSH Mapping", () => {
