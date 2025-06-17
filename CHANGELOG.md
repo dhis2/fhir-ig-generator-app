@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/dhis2/fhir-ig-generator-app/compare/v1.3.1...v1.4.0) (2025-06-17)
+
+
+### Features
+
+* add dhis2 metadata codesystems ([#26](https://github.com/dhis2/fhir-ig-generator-app/issues/26)) ([d9b3834](https://github.com/dhis2/fhir-ig-generator-app/commit/d9b38349bcaf4d30ea2cd8219fedf9647a30b9d7))
+
 ## [1.3.1](https://github.com/dhis2/fhir-ig-generator-app/compare/v1.3.0...v1.3.1) (2025-05-12)
 
 
