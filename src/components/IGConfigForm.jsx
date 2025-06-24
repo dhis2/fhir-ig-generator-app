@@ -1,5 +1,6 @@
 import React from "react";
-import { ReactFinalForm, SingleSelectFieldFF, InputFieldFF, Button, hasValue, createPattern } from "@dhis2/ui";
+import PropTypes from "prop-types";
+import { ReactFinalForm, SingleSelectFieldFF, InputFieldFF, Button, hasValue } from "@dhis2/ui";
 import styles from "./IGConfigForm.module.css";
 
 const IGConfigForm = ({ igConfig, onSubmit }) => {
@@ -113,6 +114,22 @@ const IGConfigForm = ({ igConfig, onSubmit }) => {
       </div>
     </div>
   );
+};
+
+IGConfigForm.propTypes = {
+  igConfig: PropTypes.shape({
+    id: PropTypes.string,
+    name: PropTypes.string,
+    canonical: PropTypes.string,
+    status: PropTypes.string,
+    version: PropTypes.string,
+    releaseLabel: PropTypes.string,
+    publisher: PropTypes.shape({
+      name: PropTypes.string,
+      url: PropTypes.string
+    })
+  }),
+  onSubmit: PropTypes.func.isRequired
 };
 
 export default IGConfigForm;

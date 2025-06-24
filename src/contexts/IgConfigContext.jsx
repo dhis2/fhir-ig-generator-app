@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
+import PropTypes from "prop-types";
 
 const IgConfigContext = createContext();
 
@@ -9,12 +10,18 @@ export const IgConfigProvider = ({ children }) => {
     releaseLabel: "ci-build",
   });
 
+  const value = React.useMemo(() => ({ igConfig, setIgConfig }), [igConfig, setIgConfig]);
+
   return (
-    <IgConfigContext.Provider value={{ igConfig, setIgConfig }}>
+    <IgConfigContext.Provider value={value}>
       {children}
     </IgConfigContext.Provider>
-  );
-}
+)};
+
+IgConfigProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
 export const useIgConfig = () => {
   const context = useContext(IgConfigContext);
   if (!context) {
