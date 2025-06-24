@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/dhis2/fhir-ig-generator-app/compare/v1.4.0...v1.4.1) (2025-06-24)
+
+
+### Bug Fixes
+
+* remove double scroll-bar ([#31](https://github.com/dhis2/fhir-ig-generator-app/issues/31)) ([1886e06](https://github.com/dhis2/fhir-ig-generator-app/commit/1886e06ccfd5163728b746634d6f7ee3e8f473fe))
+
 # [1.4.0](https://github.com/dhis2/fhir-ig-generator-app/compare/v1.3.1...v1.4.0) (2025-06-17)
 
 
