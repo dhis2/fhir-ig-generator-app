@@ -19,6 +19,7 @@ export const toPascalCase = (str) => {
 export const toKebabCase = (str) => {
   return str
     .replace(/[^a-zA-Z0-9\s.-]/g, " ")
+    .replace(/\./g, " ")
     .trim()
     .split(/\s+/)
     .map((word) => word.toLowerCase())
