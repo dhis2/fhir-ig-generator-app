@@ -1,5 +1,5 @@
 import React from "react";
-import { ReactFinalForm, SingleSelectFieldFF, InputFieldFF, Button, hasValue, createPattern } from "@dhis2/ui";
+import { ReactFinalForm, SingleSelectFieldFF, InputFieldFF, Button, hasValue, url, composeValidators } from "@dhis2/ui";
 import styles from "./IGConfigForm.module.css";
 
 const IGConfigForm = ({ igConfig, onSubmit }) => {
@@ -40,7 +40,7 @@ const IGConfigForm = ({ igConfig, onSubmit }) => {
                   label="Canonical"
                   component={InputFieldFF}
                   className={styles.inputField}
-                  validate={hasValue}
+                  validate={composeValidators(hasValue, url)}
                   helpText="Example: http://example.org"
                 />
 
@@ -96,7 +96,7 @@ const IGConfigForm = ({ igConfig, onSubmit }) => {
                   label="Publisher URL"
                   component={InputFieldFF}
                   className={styles.inputField}
-                  validate={hasValue}
+                  validate={composeValidators(hasValue, url)}
                   helpText="Example: http://example.org/example-publisher"
                 />
               </div>
