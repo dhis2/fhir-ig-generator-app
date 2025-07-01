@@ -3,5 +3,5 @@ Id: dhis2-tracked-entity-attributes-cs
 Title: "DHIS2 Tracked Entity Attributes"
 Description: "Code system for {{count}} unique DHIS2 tracked entity attributes"
 {{#each elements as |element|}}
-* #{{element.id}} "{{element.name}}" "{{#if element.description}}{{{escapeQuotes element.description}}}{{else}}{{{escapeQuotes element.name}}}{{/if}}"
+* #{{element.id}} "{{{element.name}}}" "{{#if element.description}}{{{escapeQuotes element.description}}}{{else}}{{{escapeQuotes element.name}}}{{/if}}"
 {{/each}}
