@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Transfer } from "@dhis2/ui";
 
 function TrackerProgramSelector({
@@ -29,5 +30,16 @@ function TrackerProgramSelector({
     </div>
   );
 }
+
+TrackerProgramSelector.propTypes = {
+  programs: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      displayName: PropTypes.string.isRequired
+    })
+  ).isRequired,
+  selectedProgramIds: PropTypes.arrayOf(PropTypes.string).isRequired,
+  setSelectedProgramIds: PropTypes.func.isRequired
+};
 
 export default TrackerProgramSelector;
