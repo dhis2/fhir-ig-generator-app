@@ -1,13 +1,15 @@
 import JSZipUtils from "jszip-utils";
 import JSZip from "jszip";
 import Handlebars from "handlebars";
-import { toPascalCase, registerHelpers } from "./handlebarsHelpers";
+import { toPascalCase, toKebabCase, registerHelpers } from "./handlebarsHelpers";
 import { handleDownload } from "./igDownload";
 import YAML from "yaml";
 
 export const exportMetadata = (trackerPrograms, templates, igConfig) => {
   registerHelpers();
   const igZipPath = `${process.env.PUBLIC_URL}/assets/ig.zip`;
+
+  const filename = igConfig?.id ? `${toKebabCase(igConfig.id)}.zip` : 'ig.zip';
   JSZipUtils.getBinaryContent(igZipPath, function (err, templateIg) {
     if (err) throw err;
 
@@ -26,7 +28,7 @@ export const exportMetadata = (trackerPrograms, templates, igConfig) => {
           generateDhis2CodeSystems(trackerPrograms,templates,igArchive);
         })
         .then(function () {
-          handleDownload(igArchive);
+          handleDownload(igArchive, filename);
         });
     });
   });
