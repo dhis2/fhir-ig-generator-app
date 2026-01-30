@@ -5,8 +5,95 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2025-04-03T07:37:31.931Z\n"
-"PO-Revision-Date: 2025-04-03T07:37:31.931Z\n"
+"POT-Creation-Date: 2026-01-30T10:55:55.257Z\n"
+"PO-Revision-Date: 2026-01-30T10:55:55.257Z\n"
+
+msgid "Download FHIR IG"
+msgstr "Download FHIR IG"
+
+msgid "Implementation Guide Configuration"
+msgstr "Implementation Guide Configuration"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "The unique identifier for the IG."
+msgstr "The unique identifier for the IG."
+
+msgid "Example"
+msgstr "Example"
+
+msgid "Name"
+msgstr "Name"
+
+msgid "Canonical"
+msgstr "Canonical"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "draft"
+msgstr "draft"
+
+msgid "active"
+msgstr "active"
+
+msgid "retired"
+msgstr "retired"
+
+msgid "unknown"
+msgstr "unknown"
+
+msgid "Version"
+msgstr "Version"
+
+msgid "Release Label"
+msgstr "Release Label"
+
+msgid "Publisher"
+msgstr "Publisher"
+
+msgid "Publisher URL"
+msgstr "Publisher URL"
+
+msgid "Next"
+msgstr "Next"
+
+msgid "Failed to fetch the IG publish instructions."
+msgstr "Failed to fetch the IG publish instructions."
+
+msgid "Unable to load the IG publish instructions."
+msgstr "Unable to load the IG publish instructions."
+
+msgid "Error"
+msgstr "Error"
+
+msgid "Close"
+msgstr "Close"
+
+msgid "Select Tracker Programs"
+msgstr "Select Tracker Programs"
+
+msgid "Available Tracker Programs"
+msgstr "Available Tracker Programs"
+
+msgid "Selected Tracker Programs"
+msgstr "Selected Tracker Programs"
+
+msgid "Successfully downloaded the Implementation Guide (IG)!"
+msgstr "Successfully downloaded the Implementation Guide (IG)!"
+
+msgid "There was an issue starting the download. Please try again."
+msgstr "There was an issue starting the download. Please try again."
+
+msgid "There was an error loading data."
+msgstr "There was an error loading data."
+
+msgid "Tracker Program Selector"
+msgstr "Tracker Program Selector"
+
+msgid "Previous"
+msgstr "Previous"
 
 msgctxt "Application title"
 msgid "__MANIFEST_APP_TITLE"
