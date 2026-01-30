@@ -9,6 +9,7 @@ import PublishingInstructionsModal from "../components/PublishingInstructionsMod
 import classes from "./TrackerProgramSelectorPage.module.css";
 import { useNavigate } from "react-router-dom";
 import { useIgConfig } from "../contexts/IgConfigContext";
+import i18n from "@dhis2/d2-i18n";
 const TrackerProgramSelectorPage = () => {
     const { igConfig } = useIgConfig();
     const navigate = useNavigate();
@@ -18,18 +19,18 @@ const TrackerProgramSelectorPage = () => {
     const [showModal, setShowModal] = useState(false);
 
     const successAlert = useAlert(
-        "Successfully downloaded the Implementation Guide (IG)!",
+        i18n.t("Successfully downloaded the Implementation Guide (IG)!"),
         { success: true }
     );
     const errorAlert = useAlert(
-        "There was an issue starting the download. Please try again.",
+        i18n.t("There was an issue starting the download. Please try again."),
         { critical: true }
     );
 
     if (programsError || templatesError) {
         return (
-            <NoticeBox title="Error" error>
-                There was an error loading data.
+            <NoticeBox title={i18n.t("Error")} error>
+                {i18n.t("There was an error loading data.")}
             </NoticeBox>
         );
     }
@@ -60,7 +61,7 @@ const TrackerProgramSelectorPage = () => {
     return (
         <div className={classes.centerWrapper}>
             <div className={classes.container}>
-                <h2 className={classes.title}>Tracker Program Selector</h2>
+                <h2 className={classes.title}>{i18n.t("Tracker Program Selector")}</h2>
                 <TrackerProgramSelector
                     programs={programs}
                     selectedProgramIds={selectedProgramIds}
@@ -68,14 +69,14 @@ const TrackerProgramSelectorPage = () => {
                 />
                 <div className={classes.buttonRow}>
                     <Button onClick={() => navigate("/")} secondary>
-                        Previous
+                        {i18n.t("Previous")}
                     </Button>
                     <Button
                         primary
                         onClick={handleDownloadClick}
                         disabled={selectedPrograms.length === 0 || !templates}
                     >
-                        Download FHIR IG
+                        {i18n.t("Download FHIR IG")}
                     </Button>
                 </div>
             </div>

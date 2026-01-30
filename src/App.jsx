@@ -2,7 +2,7 @@ import React, { useMemo, useState } from "react";
 import { RouterProvider } from "react-router-dom";
 import createAppRouter from "./routes/AppRouter";
 import { IgConfigProvider } from "./contexts/IgConfigContext";
-
+import "./locales";
 const App = () => {
   const [igConfig, setIgConfig] = useState({
     status: "draft",

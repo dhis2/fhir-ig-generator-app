@@ -3,6 +3,7 @@ import ReactMarkdown from "react-markdown";
 import { Modal, ModalContent, ModalActions, Button, CircularLoader, NoticeBox } from "@dhis2/ui";
 import PropTypes from "prop-types";
 import styles from "./PublishingInstructionsModal.module.css";
+import i18n from "@dhis2/d2-i18n";
 
 const PublishingInstructionsModal = ({ onClose }) => {
     const [markdownContent, setMarkdownContent] = useState("");
@@ -15,14 +16,14 @@ const PublishingInstructionsModal = ({ onClose }) => {
                 setIsLoading(true);
                 const response = await fetch(`${process.env.PUBLIC_URL}/assets/publishInstructions.md`);
                 if (!response.ok) {
-                    throw new Error("Failed to fetch the IG publish instructions.");
+                    throw new Error(i18n.t("Failed to fetch the IG publish instructions."));
                 }
                 const markdown = await response.text();
                 setMarkdownContent(markdown);
                 setIsLoading(false);
             } catch (error) {
                 console.error(error);
-                setError("Unable to load the IG publish instructions.");
+                setError(i18n.t("Unable to load the IG publish instructions."));
                 setIsLoading(false);
             }   
         };
@@ -41,7 +42,7 @@ const PublishingInstructionsModal = ({ onClose }) => {
 
         if (error) {
             return (
-                <NoticeBox error title="Error">
+                <NoticeBox error title={i18n.t("Error")}>
                     {error}
                 </NoticeBox>
             );
@@ -63,7 +64,7 @@ const PublishingInstructionsModal = ({ onClose }) => {
             </ModalContent>
             <ModalActions>
                 <Button onClick={onClose} primary>
-                    Close
+                    {i18n.t("Close")}
                 </Button>
             </ModalActions>
         </Modal>
