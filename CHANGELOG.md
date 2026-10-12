@@ -1,3 +1,12 @@
+## [1.4.2](https://github.com/dhis2/fhir-ig-generator-app/compare/v1.4.1...v1.4.2) (2026-10-12)
+
+
+### Bug Fixes
+
+* add app description to d2.config.js ([#38](https://github.com/dhis2/fhir-ig-generator-app/issues/38)) ([15d7335](https://github.com/dhis2/fhir-ig-generator-app/commit/15d7335eb0079abc8d98984d20bec1ff6302681a))
+* **i18n:** correct transifex resource id ([a9dfc05](https://github.com/dhis2/fhir-ig-generator-app/commit/a9dfc059867cf3c655ba7b6737600676a91f9f61))
+* **i18n:** enable transifex ([d68e305](https://github.com/dhis2/fhir-ig-generator-app/commit/d68e305333d728fac90964f5f86e375dd085f747))
+
 ## [1.4.1](https://github.com/dhis2/fhir-ig-generator-app/compare/v1.4.0...v1.4.1) (2025-06-24)
 
 
