@@ -1,3 +1,10 @@
+## [1.4.3](https://github.com/dhis2/fhir-ig-generator-app/compare/v1.4.2...v1.4.3) (2026-10-13)
+
+
+### Bug Fixes
+
+* **translations:** sync translations from transifex (main) ([#40](https://github.com/dhis2/fhir-ig-generator-app/issues/40)) ([312d03b](https://github.com/dhis2/fhir-ig-generator-app/commit/312d03b23cf538f7bc1d7a5f20837dd08be246a3))
+
 ## [1.4.2](https://github.com/dhis2/fhir-ig-generator-app/compare/v1.4.1...v1.4.2) (2026-10-12)
 
 
