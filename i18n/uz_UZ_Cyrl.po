@@ -1,0 +1,110 @@
+# Translators:
+# Khurshid Ibatov <x.ibatov@dtsj.uz>, 2026
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"POT-Creation-Date: 2026-10-12T14:33:57.848Z\n"
+"PO-Revision-Date: 2026-10-07 21:15+0000\n"
+"Last-Translator: Khurshid Ibatov <x.ibatov@dtsj.uz>, 2026\n"
+"Language-Team: Uzbek (Cyrillic) (https://app.transifex.com/hisp-uio/teams/100509/uz@Cyrl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: uz@Cyrl\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Download FHIR IG"
+msgstr ""
+
+msgid "Implementation Guide Configuration"
+msgstr ""
+
+msgid "ID"
+msgstr "ID"
+
+msgid "The unique identifier for the IG."
+msgstr ""
+
+msgid "Example"
+msgstr ""
+
+msgid "Name"
+msgstr "Исми"
+
+msgid "Canonical"
+msgstr ""
+
+msgid "Status"
+msgstr "Статус"
+
+msgid "draft"
+msgstr ""
+
+msgid "active"
+msgstr "фаол"
+
+msgid "retired"
+msgstr ""
+
+msgid "unknown"
+msgstr ""
+
+msgid "Version"
+msgstr "Вариант"
+
+msgid "Release Label"
+msgstr ""
+
+msgid "Publisher"
+msgstr ""
+
+msgid "Publisher URL"
+msgstr ""
+
+msgid "Next"
+msgstr "Кейинги"
+
+msgid "Failed to fetch the IG publish instructions."
+msgstr ""
+
+msgid "Unable to load the IG publish instructions."
+msgstr ""
+
+msgid "Error"
+msgstr "Хатолик"
+
+msgid "Close"
+msgstr "Ёпмоқ"
+
+msgid "Select Tracker Programs"
+msgstr ""
+
+msgid "Available Tracker Programs"
+msgstr ""
+
+msgid "Selected Tracker Programs"
+msgstr ""
+
+msgid "Successfully downloaded the Implementation Guide (IG)!"
+msgstr ""
+
+msgid "There was an issue starting the download. Please try again."
+msgstr ""
+
+msgid "There was an error loading data."
+msgstr ""
+
+msgid "Tracker Program Selector"
+msgstr ""
+
+msgid "Previous"
+msgstr "Олдинги"
+
+msgctxt "Application title"
+msgid "__MANIFEST_APP_TITLE"
+msgstr ""
+
+msgctxt "Application description"
+msgid "__MANIFEST_APP_DESCRIPTION"
+msgstr ""
