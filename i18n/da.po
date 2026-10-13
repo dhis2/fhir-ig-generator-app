@@ -1,0 +1,110 @@
+# Translators:
+# Philip Larsen Donnelly, 2026
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"POT-Creation-Date: 2026-10-12T14:33:57.848Z\n"
+"PO-Revision-Date: 2026-10-07 21:15+0000\n"
+"Last-Translator: Philip Larsen Donnelly, 2026\n"
+"Language-Team: Danish (https://app.transifex.com/hisp-uio/teams/100509/da/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: da\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Download FHIR IG"
+msgstr ""
+
+msgid "Implementation Guide Configuration"
+msgstr ""
+
+msgid "ID"
+msgstr ""
+
+msgid "The unique identifier for the IG."
+msgstr ""
+
+msgid "Example"
+msgstr ""
+
+msgid "Name"
+msgstr "Name"
+
+msgid "Canonical"
+msgstr ""
+
+msgid "Status"
+msgstr "Status"
+
+msgid "draft"
+msgstr ""
+
+msgid "active"
+msgstr ""
+
+msgid "retired"
+msgstr ""
+
+msgid "unknown"
+msgstr ""
+
+msgid "Version"
+msgstr ""
+
+msgid "Release Label"
+msgstr ""
+
+msgid "Publisher"
+msgstr ""
+
+msgid "Publisher URL"
+msgstr ""
+
+msgid "Next"
+msgstr "Next"
+
+msgid "Failed to fetch the IG publish instructions."
+msgstr ""
+
+msgid "Unable to load the IG publish instructions."
+msgstr ""
+
+msgid "Error"
+msgstr "Error"
+
+msgid "Close"
+msgstr "Close"
+
+msgid "Select Tracker Programs"
+msgstr ""
+
+msgid "Available Tracker Programs"
+msgstr ""
+
+msgid "Selected Tracker Programs"
+msgstr ""
+
+msgid "Successfully downloaded the Implementation Guide (IG)!"
+msgstr ""
+
+msgid "There was an issue starting the download. Please try again."
+msgstr ""
+
+msgid "There was an error loading data."
+msgstr ""
+
+msgid "Tracker Program Selector"
+msgstr ""
+
+msgid "Previous"
+msgstr ""
+
+msgctxt "Application title"
+msgid "__MANIFEST_APP_TITLE"
+msgstr ""
+
+msgctxt "Application description"
+msgid "__MANIFEST_APP_DESCRIPTION"
+msgstr ""

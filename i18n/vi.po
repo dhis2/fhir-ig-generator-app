@@ -1,0 +1,113 @@
+# Translators:
+# Em Le <em.hispvietnam@gmail.com>, 2026
+# Viktor Varland <viktor@dhis2.org>, 2026
+# Thuy Nguyen <thuynguyen@hispvietnam.org>, 2026
+# Philip Larsen Donnelly, 2026
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"POT-Creation-Date: 2026-10-12T14:33:57.848Z\n"
+"PO-Revision-Date: 2026-10-07 21:15+0000\n"
+"Last-Translator: Philip Larsen Donnelly, 2026\n"
+"Language-Team: Vietnamese (https://app.transifex.com/hisp-uio/teams/100509/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Download FHIR IG"
+msgstr ""
+
+msgid "Implementation Guide Configuration"
+msgstr ""
+
+msgid "ID"
+msgstr "Định danh (ID)"
+
+msgid "The unique identifier for the IG."
+msgstr ""
+
+msgid "Example"
+msgstr ""
+
+msgid "Name"
+msgstr "Tên"
+
+msgid "Canonical"
+msgstr ""
+
+msgid "Status"
+msgstr "Trạng thái"
+
+msgid "draft"
+msgstr ""
+
+msgid "active"
+msgstr "hoạt động"
+
+msgid "retired"
+msgstr ""
+
+msgid "unknown"
+msgstr ""
+
+msgid "Version"
+msgstr "Phiên bản"
+
+msgid "Release Label"
+msgstr ""
+
+msgid "Publisher"
+msgstr ""
+
+msgid "Publisher URL"
+msgstr ""
+
+msgid "Next"
+msgstr "Tiếp tục"
+
+msgid "Failed to fetch the IG publish instructions."
+msgstr ""
+
+msgid "Unable to load the IG publish instructions."
+msgstr ""
+
+msgid "Error"
+msgstr "Lỗi"
+
+msgid "Close"
+msgstr "Đóng"
+
+msgid "Select Tracker Programs"
+msgstr ""
+
+msgid "Available Tracker Programs"
+msgstr ""
+
+msgid "Selected Tracker Programs"
+msgstr ""
+
+msgid "Successfully downloaded the Implementation Guide (IG)!"
+msgstr ""
+
+msgid "There was an issue starting the download. Please try again."
+msgstr ""
+
+msgid "There was an error loading data."
+msgstr ""
+
+msgid "Tracker Program Selector"
+msgstr ""
+
+msgid "Previous"
+msgstr "Trước"
+
+msgctxt "Application title"
+msgid "__MANIFEST_APP_TITLE"
+msgstr ""
+
+msgctxt "Application description"
+msgid "__MANIFEST_APP_DESCRIPTION"
+msgstr ""
