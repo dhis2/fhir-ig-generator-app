@@ -1,15 +1,15 @@
 # Translators:
 # Philip Larsen Donnelly, 2026
-# easylin <lin_xd@126.com>, 2026
 # 晓东 林 <13981924470@126.com>, 2026
 # Viktor Varland <viktor@dhis2.org>, 2026
+# easylin <lin_xd@126.com>, 2026
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2026-10-12T14:33:57.848Z\n"
 "PO-Revision-Date: 2026-10-07 21:15+0000\n"
-"Last-Translator: Viktor Varland <viktor@dhis2.org>, 2026\n"
+"Last-Translator: easylin <lin_xd@126.com>, 2026\n"
 "Language-Team: Chinese (https://app.transifex.com/hisp-uio/teams/100509/zh/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -18,61 +18,61 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "Download FHIR IG"
-msgstr ""
+msgstr "下载 FHIR 实施指南"
 
 msgid "Implementation Guide Configuration"
-msgstr ""
+msgstr "实施指南配置"
 
 msgid "ID"
 msgstr "ID"
 
 msgid "The unique identifier for the IG."
-msgstr ""
+msgstr "IG 的唯一标识符。"
 
 msgid "Example"
-msgstr ""
+msgstr "示例"
 
 msgid "Name"
 msgstr "名称"
 
 msgid "Canonical"
-msgstr ""
+msgstr "Canonical"
 
 msgid "Status"
 msgstr "状态"
 
 msgid "draft"
-msgstr ""
+msgstr "草稿"
 
 msgid "active"
 msgstr "在用的"
 
 msgid "retired"
-msgstr ""
+msgstr "已退休"
 
 msgid "unknown"
-msgstr ""
+msgstr "未知"
 
 msgid "Version"
 msgstr "版本"
 
 msgid "Release Label"
-msgstr ""
+msgstr "发行厂牌"
 
 msgid "Publisher"
-msgstr ""
+msgstr "出版商"
 
 msgid "Publisher URL"
-msgstr ""
+msgstr "出版商网址"
 
 msgid "Next"
 msgstr "下一步"
 
 msgid "Failed to fetch the IG publish instructions."
-msgstr ""
+msgstr "无法获取 IG 发布说明。"
 
 msgid "Unable to load the IG publish instructions."
-msgstr ""
+msgstr "无法加载 IG 发布说明。"
 
 msgid "Error"
 msgstr "错误"
@@ -81,33 +81,35 @@ msgid "Close"
 msgstr "关闭"
 
 msgid "Select Tracker Programs"
-msgstr ""
+msgstr "选择追踪计划"
 
 msgid "Available Tracker Programs"
-msgstr ""
+msgstr "可用的追踪计划"
 
 msgid "Selected Tracker Programs"
-msgstr ""
+msgstr "精选追踪计划"
 
 msgid "Successfully downloaded the Implementation Guide (IG)!"
-msgstr ""
+msgstr "已成功下载《实施指南》（IG）！"
 
 msgid "There was an issue starting the download. Please try again."
-msgstr ""
+msgstr "下载过程中出现问题。请重试。"
 
 msgid "There was an error loading data."
-msgstr ""
+msgstr "加载数据时发生错误。"
 
 msgid "Tracker Program Selector"
-msgstr ""
+msgstr "追踪器程序选择器"
 
 msgid "Previous"
 msgstr "前一"
 
 msgctxt "Application title"
 msgid "__MANIFEST_APP_TITLE"
-msgstr ""
+msgstr "FHIR 信息组生成器"
 
 msgctxt "Application description"
 msgid "__MANIFEST_APP_DESCRIPTION"
 msgstr ""
+"该应用程序可基于 DHIS2 Tracker 的元数据协助编写 FHIR 实施指南（IG），通过将 DHIS2 Tracker "
+"项目的元数据自动转换为标准化的 FHIR 实施指南来实现这一功能。"
